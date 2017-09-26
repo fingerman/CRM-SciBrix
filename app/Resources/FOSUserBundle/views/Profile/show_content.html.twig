@@ -1,0 +1,13 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4">
+            <h1>User Profile</h1>
+            <div class="fos_user_user_show">
+                <p><label for="username">{{ 'profile.show.username'|trans }}: {{ user.username }}</label></p>
+                <p><label>{{ 'profile.show.email'|trans }}: {{ user.email }}</label></p>
+            </div>
+        </div>
+    </div>
+</div>
