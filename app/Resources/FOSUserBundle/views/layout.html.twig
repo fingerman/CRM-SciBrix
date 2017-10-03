@@ -15,12 +15,21 @@
         </div>
         <ul class="nav navbar-nav">
             <li><a href="{{ path('homepage') }}">Home</a></li>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <li><a href="{{ path('company_index') }}">Companies</a> </li>
+                <li><a href="{{ path('customer_index') }}">Customers</a> </li>
+                <li><a href="{{ path('supplier_index') }}">Suppliers</a> </li>
+                <li><a href="{{ path('product_index') }}">Products</a> </li>
+            {% endif %}
         </ul>
+
+
+
 
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <li><a>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a>
+                    <li><a href="{{ path('fos_user_profile_show') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a>
                     </li>
                     <li><a href="{{ path('fos_user_security_logout') }}">
                             {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
@@ -32,7 +41,6 @@
                         <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
                     </li>
                 {% endif %}
-
             </ul>
         </div>
     </div>
@@ -53,6 +61,8 @@
             <div>
                 {% block fos_user_content %}
                 {% endblock fos_user_content %}
+                {% block body %}
+                {% endblock  %}
             </div>
         </div>
     </div>

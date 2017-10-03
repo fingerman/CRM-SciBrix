@@ -5,7 +5,15 @@
         <div class="col-xs-4">
             <h1>Register</h1>
             {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-            {{ form_widget(form) }}
+            {{ form_row(form.username) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.plainPassword) }}
+            {{ form_row(form.firstName) }}
+            {{ form_row(form.familyName) }}
+            {{ form_row(form.phoneBusiness) }}
+            {{ form_row(form.phonePrivate) }}
+            {{ form_row(form.address) }}
+            {{ form_row(form.note) }}
             <div>
                 <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}"/>
             </div>

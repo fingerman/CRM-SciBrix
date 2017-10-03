@@ -7,6 +7,15 @@
             <div class="fos_user_user_show">
                 <p><label for="username">{{ 'profile.show.username'|trans }}: {{ user.username }}</label></p>
                 <p><label>{{ 'profile.show.email'|trans }}: {{ user.email }}</label></p>
+                <p><label>{{ 'profile.show.firstname'|trans }}: {{ user.firstname }}</label></p>
+                <p><label>{{ 'profile.show.familyname'|trans }}: {{ user.familyname }}</label></p>
+                <p><label>{{ 'profile.show.phoneBusiness'|trans }}: {{ user.phoneBusiness }}</label></p>
+                <p><label>{{ 'profile.show.phonePrivate'|trans }}: {{ user.phonePrivate }}</label></p>
+                <p><label>{{ 'profile.show.address'|trans }}: {{ user.address }}</label></p>
+                <p><label>{{ 'profile.show.note'|trans }}: {{ user.note }}</label></p>
+            </div>
+            <div>
+                <a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}" role="button">Edit</a>
             </div>
         </div>
     </div>

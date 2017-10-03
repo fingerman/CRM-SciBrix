@@ -32,6 +32,29 @@ class User extends BaseUser
     private $firstName;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $familyName;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $phoneBusiness;
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $phonePrivate;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $address;
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $note;
+
+    /**
      * User constructor.
      * @param $id
      */
@@ -64,11 +87,85 @@ class User extends BaseUser
         $this->firstName = $firstName;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getFamilyName()
+    {
+        return $this->familyName;
+    }
 
+    /**
+     * @param mixed $familyName
+     */
+    public function setFamilyName($familyName)
+    {
+        $this->familyName = $familyName;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getPhoneBusiness()
+    {
+        return $this->phoneBusiness;
+    }
 
+    /**
+     * @param mixed $phoneBusiness
+     */
+    public function setPhoneBusiness($phoneBusiness)
+    {
+        $this->phoneBusiness = $phoneBusiness;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getPhonePrivate()
+    {
+        return $this->phonePrivate;
+    }
 
+    /**
+     * @param mixed $phonePrivate
+     */
+    public function setPhonePrivate($phonePrivate)
+    {
+        $this->phonePrivate = $phonePrivate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param mixed $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param mixed $note
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+    }
 
 
 }

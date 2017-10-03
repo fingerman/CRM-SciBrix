@@ -1,0 +1,59 @@
+{% extends '@FOSUser/layout.html.twig' %}
+
+{% block body %}
+    <h1>Companies list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Namecompany</th>
+                <th>Segment</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Addresscompany</th>
+                <th>Hasbought</th>
+                <th>Productinterest</th>
+                <th>Amount</th>
+                <th>Price</th>
+                <th>Contacted</th>
+                <th>Note</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for company in companies %}
+            <tr>
+                <td><a href="{{ path('company_show', { 'id': company.id }) }}">{{ company.id }}</a></td>
+                <td>{{ company.nameCompany }}</td>
+                <td>{{ company.segment }}</td>
+                <td>{{ company.country }}</td>
+                <td>{{ company.city }}</td>
+                <td>{{ company.addressCompany }}</td>
+                <td>{% if company.hasBought %}Yes{% else %}No{% endif %}</td>
+                <td>{{ company.productInterest }}</td>
+                <td>{{ company.amount }}</td>
+                <td>{{ company.price }}</td>
+                <td>{% if company.contacted %}Yes{% else %}No{% endif %}</td>
+                <td>{{ company.note }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('company_show', { 'id': company.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('company_edit', { 'id': company.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('company_new') }}">Create a new company</a>
+        </li>
+    </ul>
+{% endblock %}
