@@ -14,6 +14,8 @@
                 <th>Soldto</th>
                 <th>Count</th>
                 <th>Note</th>
+                <th>Created at</th>
+                <th>Updated at</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -28,6 +30,9 @@
                 <td>{{ product.soldTo }}</td>
                 <td>{{ product.count }}</td>
                 <td>{{ product.note }}</td>
+                <td>{% if product.dateCreated %}{{ product.dateCreated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if product.dateUpdated %}{{ product.dateUpdated|date('Y-m-d H:i:s') }}{% endif %}</td>
+
                 <td>
                     <ul>
                         <li>

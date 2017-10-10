@@ -14,10 +14,6 @@
                 <td>{{ supplier.name }}</td>
             </tr>
             <tr>
-                <th>Surname</th>
-                <td>{{ supplier.surname }}</td>
-            </tr>
-            <tr>
                 <th>Segment</th>
                 <td>{{ supplier.segment }}</td>
             </tr>
@@ -34,12 +30,12 @@
                 <td>{{ supplier.address }}</td>
             </tr>
             <tr>
-                <th>Company</th>
-                <td>{{ supplier.company }}</td>
-            </tr>
-            <tr>
                 <th>Description</th>
                 <td>{{ supplier.description }}</td>
+            </tr>
+            <tr>
+                <th>Company</th>
+                <td>{{ supplier.company.getCompanyName }}</td>
             </tr>
         </tbody>
     </table>

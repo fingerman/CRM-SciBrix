@@ -2,9 +2,14 @@
 
 namespace CompanyBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use CompanyBundle\Entity\Company;
+use CompanyBundle\Entity\Supplier;
+
 
 class SupplierType extends AbstractType
 {
@@ -13,7 +18,17 @@ class SupplierType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('surname')->add('segment')->add('email')->add('phone')->add('address')->add('company')->add('description');
+        $builder
+            ->add('name')
+            ->add('segment')
+            ->add('email')
+            ->add('phone')
+            ->add('address')
+            ->add('description')
+            ->add('company', EntityType::class, array(
+                'class' => 'CompanyBundle:Company',
+                'choice_label' => 'companyName'
+            ));
     }
     
     /**

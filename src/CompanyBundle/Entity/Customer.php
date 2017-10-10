@@ -57,9 +57,8 @@ class Customer
     private $phonePrivate;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="company", type="string", length=255)
+     * @var \CompanyBundle\Entity\Company
+     * @ORM\ManyToOne(targetEntity="Company", inversedBy="customers")
      */
     private $company;
 
@@ -90,6 +89,20 @@ class Customer
      * @ORM\Column(name="note", type="text")
      */
     private $note;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_created", type="datetime")
+     */
+    private $dateCreated;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_updated", type="datetime")
+     */
+    private $dateUpdated;
 
 
     /**
@@ -223,23 +236,16 @@ class Customer
     }
 
     /**
-     * Set company
+     * @param Company $company
      *
-     * @param string $company
-     *
-     * @return Customer
      */
-    public function setCompany($company)
+    public function setCompany(Company $company)
     {
         $this->company = $company;
-
-        return $this;
     }
 
     /**
-     * Get company
-     *
-     * @return string
+     * @return Company
      */
     public function getCompany()
     {
@@ -340,6 +346,54 @@ class Customer
     public function getNote()
     {
         return $this->note;
+    }
+
+    /**
+     * Set dateCreated
+     *
+     * @param \DateTime $dateCreated
+     *
+     * @return Customer
+     */
+    public function setDateCreated($dateCreated)
+    {
+        $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreated
+     *
+     * @return \DateTime
+     */
+    public function getDateCreated()
+    {
+        return $this->dateCreated;
+    }
+
+    /**
+     * Set dateUpdated
+     *
+     * @param \DateTime $dateUpdated
+     *
+     * @return Customer
+     */
+    public function setDateUpdated($dateUpdated)
+    {
+        $this->dateUpdated = $dateUpdated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateUpdated
+     *
+     * @return \DateTime
+     */
+    public function getDateUpdated()
+    {
+        return $this->dateUpdated;
     }
 }
 

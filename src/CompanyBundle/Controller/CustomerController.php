@@ -44,6 +44,8 @@ class CustomerController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $customer->setDateCreated(new \DateTime());
+            $customer->setDateUpdated(new \DateTime());
             $em = $this->getDoctrine()->getManager();
             $em->persist($customer);
             $em->flush();

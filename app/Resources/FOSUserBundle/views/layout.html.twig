@@ -16,9 +16,9 @@
         <ul class="nav navbar-nav">
             <li><a href="{{ path('homepage') }}">Home</a></li>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <li><a href="{{ path('company_index') }}">Companies</a> </li>
+                <li><a href="#">Companies</a> </li>
                 <li><a href="{{ path('customer_index') }}">Customers</a> </li>
-                <li><a href="{{ path('supplier_index') }}">Suppliers</a> </li>
+                <li><a href="#">Suppliers</a> </li>
                 <li><a href="{{ path('product_index') }}">Products</a> </li>
             {% endif %}
         </ul>

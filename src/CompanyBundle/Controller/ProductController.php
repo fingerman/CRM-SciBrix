@@ -44,6 +44,8 @@ class ProductController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $product->setDateCreated(new \DateTime());
+            $product->setDateUpdated(new \DateTime());
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();

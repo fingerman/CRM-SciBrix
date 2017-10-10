@@ -2,6 +2,7 @@
 
 namespace CompanyBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,7 +20,10 @@ class CustomerType extends AbstractType
             ->add('email')
             ->add('phoneBusiness')
             ->add('phonePrivate')
-            ->add('company')
+            ->add('company', EntityType::class, array(
+                'class' => 'CompanyBundle:Company',
+                'choice_label' => 'companyName'
+            ))
             ->add('department')
             ->add('address')
             ->add('interestedIn')

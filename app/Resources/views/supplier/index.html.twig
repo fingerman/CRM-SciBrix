@@ -8,12 +8,11 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Surname</th>
+                <th>Company</th>
                 <th>Segment</th>
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Address</th>
-                <th>Company</th>
                 <th>Description</th>
                 <th>Actions</th>
             </tr>
@@ -23,12 +22,11 @@
             <tr>
                 <td><a href="{{ path('supplier_show', { 'id': supplier.id }) }}">{{ supplier.id }}</a></td>
                 <td>{{ supplier.name }}</td>
-                <td>{{ supplier.surname }}</td>
+                <td>{{ supplier.company.getcompanyName }}</td>
                 <td>{{ supplier.segment }}</td>
                 <td>{{ supplier.email }}</td>
                 <td>{{ supplier.phone }}</td>
                 <td>{{ supplier.address }}</td>
-                <td>{{ supplier.company }}</td>
                 <td>{{ supplier.description }}</td>
                 <td>
                     <ul>

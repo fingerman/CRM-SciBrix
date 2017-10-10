@@ -2,6 +2,7 @@
 
 namespace CompanyBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,80 +25,70 @@ class Company
     /**
      * @var string
      *
-     * @ORM\Column(name="nameCompany", type="string", length=255)
+     * @ORM\Column(name="companyName", type="string", length=255)
      */
-    private $nameCompany;
+    private $companyName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="segment", type="string", length=255)
+     * @ORM\Column(name="companyAddress", type="string", length=255)
      */
-    private $segment;
+    private $companyAddress;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="country", type="string", length=2)
+     * @ORM\Column(name="companyPhone", type="string", length=255)
      */
-    private $country;
+    private $companyPhone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="city", type="string", length=255)
+     * @ORM\Column(name="companyEmail", type="string", length=255)
      */
-    private $city;
+    private $companyEmail;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="addressCompany", type="string", length=255)
+     * @ORM\Column(name="interestedIn", type="string", length=255)
      */
-    private $addressCompany;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="hasBought", type="boolean", nullable=true)
-     */
-    private $hasBought;
+    private $interestedIn;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="productInterest", type="string", length=255)
+     * @ORM\Column(name="description", type="text")
      */
-    private $productInterest;
+    private $description;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="amount", type="integer")
-     */
-    private $amount;
+ * @var ArrayCollection
+ * @ORM\OneToMany(targetEntity="Supplier", mappedBy="company")
+ *
+ *
+ */
+    private $suppliers;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="price", type="float")
+     * Company constructor.
      */
-    private $price;
+
+    function __construct()
+    {
+        $this->suppliers = new ArrayCollection();
+    }
+
 
     /**
-     * @var bool
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Customer", mappedBy="company")
      *
-     * @ORM\Column(name="contacted", type="boolean", nullable=true)
-     */
-    private $contacted;
-
-    /**
-     * @var string
      *
-     * @ORM\Column(name="note", type="text")
      */
-    private $note;
-
+    private $customers;
 
     /**
      * Get id
@@ -109,268 +100,188 @@ class Company
         return $this->id;
     }
 
+    public function __toString()
+    {
+        return (string) $this->getId();
+    }
+
+
+
     /**
-     * Set nameCompany
+     * Set companyName
      *
-     * @param string $nameCompany
+     * @param string $companyName
      *
      * @return Company
      */
-    public function setNameCompany($nameCompany)
+    public function setCompanyName($companyName)
     {
-        $this->nameCompany = $nameCompany;
+        $this->companyName = $companyName;
 
         return $this;
     }
 
     /**
-     * Get nameCompany
+     * Get companyName
      *
      * @return string
      */
-    public function getNameCompany()
+    public function getCompanyName()
     {
-        return $this->nameCompany;
+        return $this->companyName;
     }
 
     /**
-     * Set segment
+     * Set companyAddress
      *
-     * @param string $segment
+     * @param string $companyAddress
      *
      * @return Company
      */
-    public function setSegment($segment)
+    public function setCompanyAddress($companyAddress)
     {
-        $this->segment = $segment;
+        $this->companyAddress = $companyAddress;
 
         return $this;
     }
 
     /**
-     * Get segment
+     * Get companyAddress
      *
      * @return string
      */
-    public function getSegment()
+    public function getCompanyAddress()
     {
-        return $this->segment;
+        return $this->companyAddress;
     }
 
     /**
-     * Set country
+     * Set companyPhone
      *
-     * @param string $country
+     * @param string $companyPhone
      *
      * @return Company
      */
-    public function setCountry($country)
+    public function setCompanyPhone($companyPhone)
     {
-        $this->country = $country;
+        $this->companyPhone = $companyPhone;
 
         return $this;
     }
 
     /**
-     * Get country
+     * Get companyPhone
      *
      * @return string
      */
-    public function getCountry()
+    public function getCompanyPhone()
     {
-        return $this->country;
+        return $this->companyPhone;
     }
 
     /**
-     * Set city
+     * Set companyEmail
      *
-     * @param string $city
+     * @param string $companyEmail
      *
      * @return Company
      */
-    public function setCity($city)
+    public function setCompanyEmail($companyEmail)
     {
-        $this->city = $city;
+        $this->companyEmail = $companyEmail;
 
         return $this;
     }
 
     /**
-     * Get city
+     * Get companyEmail
      *
      * @return string
      */
-    public function getCity()
+    public function getCompanyEmail()
     {
-        return $this->city;
+        return $this->companyEmail;
     }
 
     /**
-     * Set addressCompany
+     * Set interestedIn
      *
-     * @param string $addressCompany
+     * @param string $interestedIn
      *
      * @return Company
      */
-    public function setAddressCompany($addressCompany)
+    public function setInterestedIn($interestedIn)
     {
-        $this->addressCompany = $addressCompany;
+        $this->interestedIn = $interestedIn;
 
         return $this;
     }
 
     /**
-     * Get addressCompany
+     * Get interestedIn
      *
      * @return string
      */
-    public function getAddressCompany()
+    public function getInterestedIn()
     {
-        return $this->addressCompany;
+        return $this->interestedIn;
     }
 
     /**
-     * Set hasBought
+     * Set description
      *
-     * @param boolean $hasBought
+     * @param string $description
      *
      * @return Company
      */
-    public function setHasBought($hasBought)
+    public function setDescription($description)
     {
-        $this->hasBought = $hasBought;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get hasBought
-     *
-     * @return bool
-     */
-    public function getHasBought()
-    {
-        return $this->hasBought;
-    }
-
-    /**
-     * Set productInterest
-     *
-     * @param string $productInterest
-     *
-     * @return Company
-     */
-    public function setProductInterest($productInterest)
-    {
-        $this->productInterest = $productInterest;
-
-        return $this;
-    }
-
-    /**
-     * Get productInterest
+     * Get description
      *
      * @return string
      */
-    public function getProductInterest()
+    public function getDescription()
     {
-        return $this->productInterest;
+        return $this->description;
     }
 
     /**
-     * Set amount
-     *
-     * @param integer $amount
-     *
-     * @return Company
+     * @return ArrayCollection
      */
-    public function setAmount($amount)
+    public function getSuppliers(): ArrayCollection
     {
-        $this->amount = $amount;
-
-        return $this;
+        return $this->suppliers;
     }
 
     /**
-     * Get amount
-     *
-     * @return int
+     * @param ArrayCollection $suppliers
      */
-    public function getAmount()
+    public function setSuppliers(ArrayCollection $suppliers)
     {
-        return $this->amount;
+        $this->suppliers = $suppliers;
     }
 
     /**
-     * Set price
-     *
-     * @param float $price
-     *
-     * @return Company
+     * @return ArrayCollection
      */
-    public function setPrice($price)
+    public function getCustomers(): ArrayCollection
     {
-        $this->price = $price;
-
-        return $this;
+        return $this->customers;
     }
 
     /**
-     * Get price
-     *
-     * @return float
+     * @param ArrayCollection $customers
      */
-    public function getPrice()
+    public function setCustomers(ArrayCollection $customers)
     {
-        return $this->price;
+        $this->customers = $customers;
     }
 
-    /**
-     * Set contacted
-     *
-     * @param boolean $contacted
-     *
-     * @return Company
-     */
-    public function setContacted($contacted)
-    {
-        $this->contacted = $contacted;
-
-        return $this;
-    }
-
-    /**
-     * Get contacted
-     *
-     * @return bool
-     */
-    public function getContacted()
-    {
-        return $this->contacted;
-    }
-
-    /**
-     * Set note
-     *
-     * @param string $note
-     *
-     * @return Company
-     */
-    public function setNote($note)
-    {
-        $this->note = $note;
-
-        return $this;
-    }
-
-    /**
-     * Get note
-     *
-     * @return string
-     */
-    public function getNote()
-    {
-        return $this->note;
-    }
 }
 

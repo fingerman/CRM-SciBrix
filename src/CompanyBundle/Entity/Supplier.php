@@ -2,6 +2,7 @@
 
 namespace CompanyBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,13 +28,6 @@ class Supplier
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="surname", type="string", length=255)
-     */
-    private $surname;
 
     /**
      * @var string
@@ -66,16 +60,18 @@ class Supplier
     /**
      * @var string
      *
-     * @ORM\Column(name="company", type="string", length=255)
-     */
-    private $company;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
+
+    /**
+     * @var \CompanyBundle\Entity\Company
+     * @ORM\ManyToOne(targetEntity="Company", inversedBy="suppliers")
+     */
+
+    private $company;
+
+
 
 
     /**
@@ -110,30 +106,6 @@ class Supplier
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set surname
-     *
-     * @param string $surname
-     *
-     * @return Supplier
-     */
-    public function setSurname($surname)
-    {
-        $this->surname = $surname;
-
-        return $this;
-    }
-
-    /**
-     * Get surname
-     *
-     * @return string
-     */
-    public function getSurname()
-    {
-        return $this->surname;
     }
 
     /**
@@ -233,30 +205,6 @@ class Supplier
     }
 
     /**
-     * Set company
-     *
-     * @param string $company
-     *
-     * @return Supplier
-     */
-    public function setCompany($company)
-    {
-        $this->company = $company;
-
-        return $this;
-    }
-
-    /**
-     * Get company
-     *
-     * @return string
-     */
-    public function getCompany()
-    {
-        return $this->company;
-    }
-
-    /**
      * Set description
      *
      * @param string $description
@@ -279,5 +227,30 @@ class Supplier
     {
         return $this->description;
     }
+
+    /**
+     * @return Company
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getCompany();
+    }
+
+    /**
+     * @param Company $company
+     */
+    public function setCompany(Company $company)
+    {
+        $this->company = $company;
+    }
+
 }
 

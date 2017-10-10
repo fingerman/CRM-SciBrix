@@ -1,4 +1,4 @@
-{% extends '@FOSUser/layout.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
     <h1>Company</h1>
@@ -10,48 +10,28 @@
                 <td>{{ company.id }}</td>
             </tr>
             <tr>
-                <th>Namecompany</th>
-                <td>{{ company.nameCompany }}</td>
+                <th>Companyname</th>
+                <td>{{ company.companyName }}</td>
             </tr>
             <tr>
-                <th>Segment</th>
-                <td>{{ company.segment }}</td>
+                <th>Companyaddress</th>
+                <td>{{ company.companyAddress }}</td>
             </tr>
             <tr>
-                <th>Country</th>
-                <td>{{ company.country }}</td>
+                <th>Companyphone</th>
+                <td>{{ company.companyPhone }}</td>
             </tr>
             <tr>
-                <th>City</th>
-                <td>{{ company.city }}</td>
+                <th>Companyemail</th>
+                <td>{{ company.companyEmail }}</td>
             </tr>
             <tr>
-                <th>Addresscompany</th>
-                <td>{{ company.addressCompany }}</td>
+                <th>Interestedin</th>
+                <td>{{ company.interestedIn }}</td>
             </tr>
             <tr>
-                <th>Hasbought</th>
-                <td>{% if company.hasBought %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Productinterest</th>
-                <td>{{ company.productInterest }}</td>
-            </tr>
-            <tr>
-                <th>Amount</th>
-                <td>{{ company.amount }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ company.price }}</td>
-            </tr>
-            <tr>
-                <th>Contacted</th>
-                <td>{% if company.contacted %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Note</th>
-                <td>{{ company.note }}</td>
+                <th>Description</th>
+                <td>{{ company.description }}</td>
             </tr>
         </tbody>
     </table>
@@ -69,4 +49,4 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
-{% endblock  %}
+{% endblock %}
