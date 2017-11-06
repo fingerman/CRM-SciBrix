@@ -2,48 +2,38 @@
 
 {% block body %}
     <h1>Companies list</h1>
+    <br>
 
-    <table>
+    <table class="table table-hover">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Companyname</th>
-                <th>Companyaddress</th>
-                <th>Companyphone</th>
-                <th>Companyemail</th>
-                <th>Interestedin</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Company</th>
+            <th>Segment</th>
+            <th>Country</th>
+            <th></th>
+        </tr>
         </thead>
         <tbody>
         {% for company in companies %}
             <tr>
-                <td><a href="{{ path('company_show', { 'id': company.id }) }}">{{ company.id }}</a></td>
+               {# <td><a href=" {{ path('company_show', { 'id': company.id }) }} "> {{ company.id }}</a></td> #}
                 <td>{{ company.companyName }}</td>
-                <td>{{ company.companyAddress }}</td>
-                <td>{{ company.companyPhone }}</td>
-                <td>{{ company.companyEmail }}</td>
-                <td>{{ company.interestedIn }}</td>
-                <td>{{ company.description }}</td>
+                <td>{{ company.segment }}</td>
+                <td>{{ company.country }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('company_show', { 'id': company.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('company_edit', { 'id': company.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a href="{{ path('company_show', { 'id': company.id }) }}" type="button" class="btn btn-info" aria-label="Center Align">
+                        Show
+                    </a>
+                    <a href="{{ path('company_edit', { 'id': company.id }) }}" type="button" class="btn btn-info" aria-label="Center Align">
+                        Edit
+                    </a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('company_new') }}">Create a new company</a>
-        </li>
-    </ul>
+
+    <a class="btn btn-primary" href="{{ path('company_new') }}">Add</a>
+
 {% endblock %}

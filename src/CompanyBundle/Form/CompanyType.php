@@ -2,9 +2,15 @@
 
 namespace CompanyBundle\Form;
 
+use Doctrine\DBAL\Types\TextType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Intl\Intl;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 
 class CompanyType extends AbstractType
 {
@@ -13,7 +19,24 @@ class CompanyType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('companyName')->add('companyAddress')->add('companyPhone')->add('companyEmail')->add('interestedIn')->add('description');
+        $builder->add('companyName')
+            ->add('segment')
+            ->add('companyAddress')
+            ->add('country', ChoiceType::class, [
+                'choices' => array_flip(Intl::getRegionBundle()->getCountryNames())
+            ])
+            ->add('companyPhone')
+            ->add('companyEmail')
+            ->add('contacted')
+            ->add('interestedIn')
+            ->add('amount')
+            ->add('price', MoneyType::class, array(
+                'currency' => '',
+                ))
+            ->add('hasBought')
+            ->add('description', null,  [
+                'required'   => false,
+            ]);
     }
     
     /**

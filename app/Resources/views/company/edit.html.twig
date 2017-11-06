@@ -1,21 +1,104 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Company edit</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+    <div class="row">
+        <div class="col-md-10">
+            <h1>Company edit</h1>
+        </div>
+        <div class="col-md-1">
+            <div class="col-md-offset-6 col-md-1">
+                {{ form_start(delete_form) }}
+                <button type="submit" class="btn btn-danger">Delete</button>
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+    </div>
+
+    {{ form_start(edit_form, {'attr': {'class': 'form-horizontal'} }) }}
+    <div class="form-group">
+        <label class="col-md-4 control-label">Company Name</label>
+        <div class="col-md-5">
+            {{ form_widget(edit_form.companyName, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">Segment</label>
+        <div class="col-md-5">
+            {{ form_widget(edit_form.segment, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">Company Address</label>
+        <div class="col-md-5">
+            {{ form_widget(edit_form.companyAddress, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">Country</label>
+        <div class="col-md-5">
+            {{ form_widget(edit_form.country, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">Phone</label>
+        <div class="col-md-5">
+            {{ form_widget(edit_form.companyPhone, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">Email</label>
+        <div class="col-md-5">
+            {{ form_widget(edit_form.companyEmail, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">already Contacted ?</label>
+        <div class="col-md-5">
+            {{ form_widget(edit_form.contacted, {'attr': {'class': 'checkbox'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">Interested in</label>
+        <div class="col-md-5">
+            {{ form_widget(edit_form.interestedIn, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">Amount</label>
+        <div class="col-md-5">
+            {{ form_widget(edit_form.amount, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">Price</label>
+        <div class="col-md-5">
+            {{ form_widget(edit_form.price, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">has bought ?</label>
+        <div class="col-md-5">
+            {{ form_widget(edit_form.hasBought, {'attr': {'class': 'checkbox'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">Description</label>
+        <div class="col-md-5">
+            {{ form_widget(edit_form.description, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-5 col-md-1">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+
+        <div class="col-md-1">
+            <a class="btn btn-default" href="{{ path('company_index') }}" role="button">Back to the list</a>
+        </div>
+    </div>
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('company_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
 {% endblock %}

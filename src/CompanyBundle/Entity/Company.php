@@ -4,6 +4,8 @@ namespace CompanyBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 
 /**
  * Company
@@ -29,12 +31,28 @@ class Company
      */
     private $companyName;
 
+
+    /**
+     * @var string
+     * @ORM\Column(name="segment", type="string", length=255)
+     */
+    private $segment;
+
     /**
      * @var string
      *
      * @ORM\Column(name="companyAddress", type="string", length=255)
      */
     private $companyAddress;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string", length=2)
+     * @Assert\Country()
+     */
+    private $country;
 
     /**
      * @var string
@@ -51,11 +69,39 @@ class Company
     private $companyEmail;
 
     /**
+     * @var bool
+     * @ORM\Column(name="contacted", type="boolean", nullable=true)
+     */
+    private $contacted;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="interestedIn", type="string", length=255)
      */
     private $interestedIn;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="amount", type="integer")
+     */
+    private $amount;
+
+
+    /**
+     * @ORM\Column(type="decimal", scale=2)
+     */
+    private $price;
+
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="hasBought", type="boolean", nullable=true)
+     */
+    private $hasBought;
+
 
     /**
      * @var string
@@ -65,11 +111,11 @@ class Company
     private $description;
 
     /**
- * @var ArrayCollection
- * @ORM\OneToMany(targetEntity="Supplier", mappedBy="company")
- *
- *
- */
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Supplier", mappedBy="company")
+     *
+     *
+     */
     private $suppliers;
 
     /**
@@ -102,9 +148,8 @@ class Company
 
     public function __toString()
     {
-        return (string) $this->getId();
+        return (string)$this->getId();
     }
-
 
 
     /**
@@ -282,6 +327,142 @@ class Company
     {
         $this->customers = $customers;
     }
+
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     *
+     * @return Company
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+
+    /**
+     * Set contacted
+     *
+     * @param boolean $contacted
+     *
+     * @return Company
+     */
+    public function setContacted($contacted)
+    {
+        $this->contacted = $contacted;
+        return $this;
+    }
+
+
+    /**
+     * Get contacted
+     *
+     * @return bool
+     */
+    public function getContacted()
+    {
+        return $this->contacted;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param int $amount
+     *
+     * @return Company
+     *
+     */
+
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getHasBought()
+    {
+        return $this->hasBought;
+    }
+
+    /**
+     * @param boolean $hasBought
+     *
+     * @return Company
+     */
+    public function setHasBought($hasBought)
+    {
+        $this->hasBought = $hasBought;
+
+        return $this;
+    }
+
+    /**
+     * Get segment
+     *
+     * @return string
+     */
+    public function getSegment()
+    {
+        return $this->segment;
+    }
+
+    /**
+     *
+     * Set segment
+     *
+     * @param string $segment
+     *
+     * @return Company
+     *
+     */
+    public function setSegment($segment)
+    {
+        $this->segment = $segment;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param mixed $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+
+
 
 }
 

@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/crm-scibrix.iml" filepath="$PROJECT_DIR$/.idea/crm-scibrix.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../softfund/.idea/softfund.iml" filepath="$PROJECT_DIR$/../softfund/.idea/softfund.iml" />
     </modules>
   </component>
 </project>

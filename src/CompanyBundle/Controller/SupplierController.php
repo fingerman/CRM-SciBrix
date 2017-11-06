@@ -88,7 +88,7 @@ class SupplierController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('supplier_edit', array('id' => $supplier->getId()));
+            return $this->redirectToRoute('supplier_show', array('id' => $supplier->getId()));
         }
 
         return $this->render('supplier/edit.html.twig', array(

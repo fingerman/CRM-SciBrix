@@ -36,16 +36,15 @@ class Product
     private $name;
 
     /**
-     * @var float
      *
-     * @ORM\Column(name="productionPrice", type="float")
+     * @ORM\Column(name="productionPrice", type="decimal", scale=2)
      */
     private $productionPrice;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="sellPrice", type="float")
+     * @ORM\Column(name="sellPrice", type="decimal", scale=2)
      */
     private $sellPrice;
 
