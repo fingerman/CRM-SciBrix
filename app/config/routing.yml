@@ -5,10 +5,12 @@ company:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    prefix:   /
 
 app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+    resource: "@CompanyBundle/Controller/"
+    type:     annotation
+    prefix:   /crm
 
 
 

@@ -6,23 +6,25 @@
 
     <table class="table table-hover">
         <thead>
-            <tr>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Email</th>
-                <th>Phone(work)</th>
-                <th>Phone(private)</th>
-                <th>Company</th>
-                <th>Department</th>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>Phone(work)</th>
+            <th>Phone(private)</th>
+            <th>Company</th>
+            <th>Department</th>
+            {% if is_granted('ROLE_ADMIN') %}
                 <th>Created at</th>
                 <th>Updated at</th>
-                <th></th>
-            </tr>
+            {% endif %}
+            <th></th>
+        </tr>
         </thead>
         <tbody>
         {% for customer in customers %}
             <tr>
-               {# <td><a href="{{ path('customer_show', { 'id': customer.id }) }}">{{ customer.id }}</a></td> #}
+                {# <td><a href="{{ path('customer_show', { 'id': customer.id }) }}">{{ customer.id }}</a></td> #}
                 <td>{{ customer.name }}</td>
                 <td>{{ customer.surname }}</td>
                 <td>{{ customer.email }}</td>
@@ -30,15 +32,19 @@
                 <td>{{ customer.phonePrivate }}</td>
                 <td>{{ customer.company.companyname }}</td>
                 <td>{{ customer.department }}</td>
-                <td>{% if customer.dateCreated %}{{ customer.dateCreated|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if customer.dateUpdated %}{{ customer.dateUpdated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <td>{% if customer.dateCreated %}{{ customer.dateCreated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if customer.dateUpdated %}{{ customer.dateUpdated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                {% endif %}
                 <td>
-                    <a href="{{ path('customer_show', { 'id': customer.id }) }}" type="button" class="btn btn-info" aria-label="Center Align">Show</a>
-                    <a href="{{ path('customer_edit', { 'id': customer.id }) }}" type="button" class="btn btn-info" aria-label="Center Align">Edit</a>
+                    <a href="{{ path('customer_show', { 'id': customer.id }) }}" type="button" class="btn btn-info"
+                       aria-label="Center Align">Show</a>
+                    <a href="{{ path('customer_edit', { 'id': customer.id }) }}" type="button" class="btn btn-info"
+                       aria-label="Center Align">Edit</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-            <a class="btn btn-primary" href="{{ path('customer_new') }}">Add</a>
+    <a class="btn btn-primary" href="{{ path('customer_new') }}">Add</a>
 {% endblock %}

@@ -21,7 +21,9 @@ security:
 
         main:
             anonymous: ~
-            logout: ~
+            logout:
+                path: /crm/logout
+                target: /crm/login
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
@@ -32,6 +34,8 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
+                login_path: /crm/login
+                check_path: /crm/login_check
 
             remember_me:
                 secret: '%secret%'
@@ -39,8 +43,8 @@ security:
 
 
     access_control:
-            - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-            - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-            - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-            - { path: ^/admin/, role: ROLE_ADMIN }
-            - { path: ^/, roles: [ROLE_USER, ROLE_ADMIN, ROLE_SADMIN] }
+            - { path: ^/crm/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/crm/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/crm/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/crm/admin/, role: ROLE_ADMIN }
+            - { path: ^/crm/, roles: [ROLE_USER, ROLE_ADMIN, ROLE_SADMIN] }
