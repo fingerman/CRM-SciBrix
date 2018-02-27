@@ -1,16 +1,13 @@
-company:
+app:
     resource: "@CompanyBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /crm
+
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
     prefix:   /
 
-app:
-    resource: "@CompanyBundle/Controller/"
-    type:     annotation
-    prefix:   /crm
 
 
 

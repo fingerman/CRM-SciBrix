@@ -36,6 +36,7 @@ security:
                 csrf_token_generator: security.csrf.token_manager
                 login_path: /crm/login
                 check_path: /crm/login_check
+                default_target_path: /crm
 
             remember_me:
                 secret: '%secret%'
