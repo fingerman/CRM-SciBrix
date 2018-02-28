@@ -8,6 +8,13 @@ fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
     prefix:   /
 
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: "http://localhost/index.html"
+        permanent: true
+
 
 
 
