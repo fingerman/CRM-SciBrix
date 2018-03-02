@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e63dee-f6ed-4c7c-981a-41be75a2a064" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DomainBundle/Resources/config/views/index.html.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DomainBundle/Resources/config/views/index.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DomainBundle/Resources/config/views/sci_files/SciBrix_Logo_Print_RGB_Positiv_Standardversion.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DomainBundle/Resources/config/views/sci_files/background_scibrix.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DomainBundle/Resources/config/views/sci_files/css.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/crm-scibrix.iml" afterPath="$PROJECT_DIR$/.idea/crm-scibrix.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DomainBundle/Resources/views/Default/index.html.php" afterPath="$PROJECT_DIR$/src/DomainBundle/Resources/views/Default/index.html.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/app.php" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/app.php" afterPath="$PROJECT_DIR$/app.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../symfony-deployment/bin/symfony_requirements" afterPath="$PROJECT_DIR$/../symfony-deployment/bin/symfony_requirements" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../symfony-deployment/var/SymfonyRequirements.php" afterPath="$PROJECT_DIR$/../symfony-deployment/var/SymfonyRequirements.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../symfony-deployment/web/config.php" afterPath="$PROJECT_DIR$/../symfony-deployment/web/config.php" />
@@ -32,7 +24,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DomainBundle/Resources/views/Default/index.html.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="66">
@@ -40,6 +32,16 @@
               <folding>
                 <marker date="1519916256272" expanded="true" signature="13370:13429" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -93,7 +95,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../softwareTechnologies/html-stuff/todo.html" />
         <option value="$PROJECT_DIR$/../softwareTechnologies/html-stuff/hello.html" />
         <option value="$PROJECT_DIR$/../softwareTechnologies/html-stuff/website/home.html" />
         <option value="$PROJECT_DIR$/../softwareTechnologies/html-stuff/website/todo.html" />
@@ -144,6 +145,7 @@
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/DomainBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/DomainBundle/Resources/views/Default/index.html.php" />
+        <option value="$PROJECT_DIR$/web/app.php" />
       </list>
     </option>
   </component>
@@ -219,7 +221,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
+    <option name="width" value="1370" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -240,6 +242,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -266,24 +270,8 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crm-scibrix" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crm-scibrix" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -298,18 +286,18 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\crm-scibrix" />
+      <recent name="C:\xampp\htdocs\softwareTechnologies\html-stuff" />
+      <recent name="C:\xampp\htdocs\crm-scibrix\src\AppBundle" />
+      <recent name="C:\xampp\htdocs\crm-scibrix\web" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\crm-scibrix\web" />
       <recent name="C:\xampp\htdocs\crm-scibrix\src\DomainBundle\Resources\views\Default" />
       <recent name="C:\xampp\htdocs\crm-scibrix\var" />
       <recent name="C:\xampp\htdocs\crm-scibrix" />
       <recent name="C:\xampp\htdocs\crm-scibrix\domain" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\crm-scibrix" />
-      <recent name="C:\xampp\htdocs\softwareTechnologies\html-stuff" />
-      <recent name="C:\xampp\htdocs\crm-scibrix\src\AppBundle" />
-      <recent name="C:\xampp\htdocs\crm-scibrix\web" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -510,11 +498,12 @@
       <workItem from="1519817401181" duration="1020000" />
       <workItem from="1519912944894" duration="3809000" />
       <workItem from="1519919726751" duration="597000" />
+      <workItem from="1520005017188" duration="908000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="447008000" />
+    <option name="totallyTimeSpent" value="447916000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -526,19 +515,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34795764" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35343513" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33027524" sideWeight="0.136289" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13001083" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3420622" sideWeight="0.863711" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3420622" sideWeight="0.863711" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -742,13 +730,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/layout.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
@@ -843,6 +824,14 @@
           <folding>
             <marker date="1519916256272" expanded="true" signature="13370:13429" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
