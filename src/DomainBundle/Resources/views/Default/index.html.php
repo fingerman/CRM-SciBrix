@@ -805,10 +805,10 @@
         <div class="center logotype">
             <header>
                 <div class="logo-box" rel="home"><img class="logo" width="220" height=""
-                                                      src="./sci_files/SciBrix_Logo_Print_RGB_Positiv_Standardversion.png"
+                                                      src="/sci_files/SciBrix_Logo_Print_RGB_Positiv_Standardversion.png"
                                                       alt="logo" style="max-width: 1900px;"></div>
                 <div class="logo-box-retina" rel="home"><img class="logo-retina" width="220" height=""
-                                                             src="./sci_files/SciBrix_Logo_Print_RGB_Positiv_Standardversion.png"
+                                                             src="/sci_files/SciBrix_Logo_Print_RGB_Positiv_Standardversion.png"
                                                              alt="logo" style="max-width: 1900px;"></div>
             </header>
         </div>
@@ -837,7 +837,7 @@
     </footer>
     <div class="backstretch"
          style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 900px; width: 1920px; z-index: -999998; position: absolute; visibility: visible;">
-        <img src="./sci_files/background_scibrix.png"
+        <img src="/sci_files/background_scibrix.png"
              style="position: absolute; margin: 0px; padding: 0px; border: none; width: 1920px; height: 1280.16px; max-width: none; z-index: -999999; left: 0px; top: -190.08px;">
     </div>
 </div>
