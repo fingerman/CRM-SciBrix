@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/crm-scibrix.iml" filepath="$PROJECT_DIR$/.idea/crm-scibrix.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../symfony-deployment/.idea/symfony-deployment.iml" filepath="$PROJECT_DIR$/../symfony-deployment/.idea/symfony-deployment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../crm-scibrix-local/.idea/crm-scibrix-local.iml" filepath="$PROJECT_DIR$/../crm-scibrix-local/.idea/crm-scibrix-local.iml" />
     </modules>
   </component>
 </project>
