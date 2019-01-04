@@ -12,9 +12,10 @@
 namespace Symfony\Component\Cache\Adapter;
 
 use Symfony\Component\Cache\Exception\CacheException;
+use Symfony\Component\Cache\PruneableInterface;
 use Symfony\Component\Cache\Traits\PhpFilesTrait;
 
-class PhpFilesAdapter extends AbstractAdapter
+class PhpFilesAdapter extends AbstractAdapter implements PruneableInterface
 {
     use PhpFilesTrait;
 
@@ -35,6 +36,6 @@ class PhpFilesAdapter extends AbstractAdapter
 
         $e = new \Exception();
         $this->includeHandler = function () use ($e) { throw $e; };
-        $this->zendDetectUnicode = ini_get('zend.detect_unicode');
+        $this->zendDetectUnicode = filter_var(ini_get('zend.detect_unicode'), FILTER_VALIDATE_BOOLEAN);
     }
 }

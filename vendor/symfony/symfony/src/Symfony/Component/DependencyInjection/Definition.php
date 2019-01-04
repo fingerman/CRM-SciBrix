@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\DependencyInjection;
 
+use Symfony\Component\DependencyInjection\Argument\BoundArgument;
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\Exception\OutOfBoundsException;
 
@@ -34,6 +35,7 @@ class Definition
     private $configurator;
     private $tags = array();
     private $public = true;
+    private $private = true;
     private $synthetic = false;
     private $abstract = false;
     private $lazy = false;
@@ -41,6 +43,8 @@ class Definition
     private $autowired = false;
     private $autowiringTypes = array();
     private $changes = array();
+    private $bindings = array();
+    private $errors = array();
 
     protected $arguments = array();
 
@@ -93,7 +97,7 @@ class Definition
     {
         $this->changes['factory'] = true;
 
-        if (is_string($factory) && false !== strpos($factory, '::')) {
+        if (\is_string($factory) && false !== strpos($factory, '::')) {
             $factory = explode('::', $factory, 2);
         }
 
@@ -105,7 +109,7 @@ class Definition
     /**
      * Gets the factory.
      *
-     * @return string|array The PHP function or an array containing a class/Reference and a method to call
+     * @return string|array|null The PHP function or an array containing a class/Reference and a method to call
      */
     public function getFactory()
     {
@@ -115,8 +119,8 @@ class Definition
     /**
      * Sets the service that this service is decorating.
      *
-     * @param null|string $id        The decorated service id, use null to remove decoration
-     * @param null|string $renamedId The new decorated service id
+     * @param string|null $id        The decorated service id, use null to remove decoration
+     * @param string|null $renamedId The new decorated service id
      * @param int         $priority  The priority of decoration
      *
      * @return $this
@@ -125,7 +129,7 @@ class Definition
      */
     public function setDecoratedService($id, $renamedId = null, $priority = 0)
     {
-        if ($renamedId && $id == $renamedId) {
+        if ($renamedId && $id === $renamedId) {
             throw new InvalidArgumentException(sprintf('The decorated service inner name for "%s" must be different than the service name itself.', $id));
         }
 
@@ -143,7 +147,7 @@ class Definition
     /**
      * Gets the service that this service is decorating.
      *
-     * @return null|array An array composed of the decorated service id, the new id for it and the priority of decoration, null if no service is decorated
+     * @return array|null An array composed of the decorated service id, the new id for it and the priority of decoration, null if no service is decorated
      */
     public function getDecoratedService()
     {
@@ -251,12 +255,12 @@ class Definition
      */
     public function replaceArgument($index, $argument)
     {
-        if (0 === count($this->arguments)) {
+        if (0 === \count($this->arguments)) {
             throw new OutOfBoundsException('Cannot replace arguments if none have been configured yet.');
         }
 
-        if (is_int($index) && ($index < 0 || $index > count($this->arguments) - 1)) {
-            throw new OutOfBoundsException(sprintf('The index "%d" is not in the range [0, %d].', $index, count($this->arguments) - 1));
+        if (\is_int($index) && ($index < 0 || $index > \count($this->arguments) - 1)) {
+            throw new OutOfBoundsException(sprintf('The index "%d" is not in the range [0, %d].', $index, \count($this->arguments) - 1));
         }
 
         if (!array_key_exists($index, $this->arguments)) {
@@ -396,7 +400,7 @@ class Definition
     /**
      * Sets the definition templates to conditionally apply on the current definition, keyed by parent interface/class.
      *
-     * @param $instanceof ChildDefinition[]
+     * @param ChildDefinition[] $instanceof
      *
      * @return $this
      */
@@ -592,6 +596,7 @@ class Definition
         $this->changes['public'] = true;
 
         $this->public = (bool) $boolean;
+        $this->private = false;
 
         return $this;
     }
@@ -604,6 +609,35 @@ class Definition
     public function isPublic()
     {
         return $this->public;
+    }
+
+    /**
+     * Sets if this service is private.
+     *
+     * When set, the "private" state has a higher precedence than "public".
+     * In version 3.4, a "private" service always remains publicly accessible,
+     * but triggers a deprecation notice when accessed from the container,
+     * so that the service can be made really private in 4.0.
+     *
+     * @param bool $boolean
+     *
+     * @return $this
+     */
+    public function setPrivate($boolean)
+    {
+        $this->private = (bool) $boolean;
+
+        return $this;
+    }
+
+    /**
+     * Whether this service is private.
+     *
+     * @return bool
+     */
+    public function isPrivate()
+    {
+        return $this->private;
     }
 
     /**
@@ -750,7 +784,7 @@ class Definition
     {
         $this->changes['configurator'] = true;
 
-        if (is_string($configurator) && false !== strpos($configurator, '::')) {
+        if (\is_string($configurator) && false !== strpos($configurator, '::')) {
             $configurator = explode('::', $configurator, 2);
         }
 
@@ -826,7 +860,7 @@ class Definition
      */
     public function getAutowiringTypes(/*$triggerDeprecation = true*/)
     {
-        if (1 > func_num_args() || func_get_arg(0)) {
+        if (1 > \func_num_args() || func_get_arg(0)) {
             @trigger_error('Autowiring-types are deprecated since Symfony 3.3 and will be removed in 4.0. Use aliases instead.', E_USER_DEPRECATED);
         }
 
@@ -883,5 +917,59 @@ class Definition
         @trigger_error(sprintf('Autowiring-types are deprecated since Symfony 3.3 and will be removed in 4.0. Use aliases instead for "%s".', $type), E_USER_DEPRECATED);
 
         return isset($this->autowiringTypes[$type]);
+    }
+
+    /**
+     * Gets bindings.
+     *
+     * @return array
+     */
+    public function getBindings()
+    {
+        return $this->bindings;
+    }
+
+    /**
+     * Sets bindings.
+     *
+     * Bindings map $named or FQCN arguments to values that should be
+     * injected in the matching parameters (of the constructor, of methods
+     * called and of controller actions).
+     *
+     * @param array $bindings
+     *
+     * @return $this
+     */
+    public function setBindings(array $bindings)
+    {
+        foreach ($bindings as $key => $binding) {
+            if (!$binding instanceof BoundArgument) {
+                $bindings[$key] = new BoundArgument($binding);
+            }
+        }
+
+        $this->bindings = $bindings;
+
+        return $this;
+    }
+
+    /**
+     * Add an error that occurred when building this Definition.
+     *
+     * @param string $error
+     */
+    public function addError($error)
+    {
+        $this->errors[] = $error;
+    }
+
+    /**
+     * Returns any errors that occurred while building this Definition.
+     *
+     * @return array
+     */
+    public function getErrors()
+    {
+        return $this->errors;
     }
 }

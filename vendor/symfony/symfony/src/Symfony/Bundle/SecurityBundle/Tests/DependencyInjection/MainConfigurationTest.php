@@ -29,6 +29,7 @@ class MainConfigurationTest extends TestCase
         ),
         'firewalls' => array(
             'stub' => array(),
+            'logout_on_user_change' => true,
         ),
     );
 
@@ -76,6 +77,7 @@ class MainConfigurationTest extends TestCase
                         'csrf_token_generator' => 'a_token_generator',
                         'csrf_token_id' => 'a_token_id',
                     ),
+                    'logout_on_user_change' => true,
                 ),
             ),
         );
@@ -105,6 +107,7 @@ class MainConfigurationTest extends TestCase
             'firewalls' => array(
                 'stub' => array(
                     'user_checker' => 'app.henk_checker',
+                    'logout_on_user_change' => true,
                 ),
             ),
         );

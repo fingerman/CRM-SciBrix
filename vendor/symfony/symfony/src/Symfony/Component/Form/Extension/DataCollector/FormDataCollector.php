@@ -19,6 +19,7 @@ use Symfony\Component\HttpKernel\DataCollector\DataCollector;
 use Symfony\Component\Validator\ConstraintViolationInterface;
 use Symfony\Component\VarDumper\Caster\Caster;
 use Symfony\Component\VarDumper\Caster\ClassStub;
+use Symfony\Component\VarDumper\Caster\StubCaster;
 use Symfony\Component\VarDumper\Cloner\Stub;
 
 /**
@@ -69,12 +70,9 @@ class FormDataCollector extends DataCollector implements FormDataCollectorInterf
     public function __construct(FormDataExtractorInterface $dataExtractor)
     {
         $this->dataExtractor = $dataExtractor;
-        $this->data = array(
-            'forms' => array(),
-            'forms_by_hash' => array(),
-            'nb_errors' => 0,
-        );
         $this->hasVarDumper = class_exists(ClassStub::class);
+
+        $this->reset();
     }
 
     /**
@@ -82,6 +80,15 @@ class FormDataCollector extends DataCollector implements FormDataCollectorInterf
      */
     public function collect(Request $request, Response $response, \Exception $exception = null)
     {
+    }
+
+    public function reset()
+    {
+        $this->data = array(
+            'forms' => array(),
+            'forms_by_hash' => array(),
+            'nb_errors' => 0,
+        );
     }
 
     /**
@@ -154,7 +161,7 @@ class FormDataCollector extends DataCollector implements FormDataCollectorInterf
 
         // Count errors
         if (isset($this->dataByForm[$hash]['errors'])) {
-            $this->data['nb_errors'] += count($this->dataByForm[$hash]['errors']);
+            $this->data['nb_errors'] += \count($this->dataByForm[$hash]['errors']);
         }
 
         foreach ($form as $child) {
@@ -253,9 +260,10 @@ class FormDataCollector extends DataCollector implements FormDataCollectorInterf
             FormInterface::class => function (FormInterface $f, array $a) {
                 return array(
                     Caster::PREFIX_VIRTUAL.'name' => $f->getName(),
-                    Caster::PREFIX_VIRTUAL.'type_class' => new ClassStub(get_class($f->getConfig()->getType()->getInnerType())),
+                    Caster::PREFIX_VIRTUAL.'type_class' => new ClassStub(\get_class($f->getConfig()->getType()->getInnerType())),
                 );
             },
+            FormView::class => array(StubCaster::class, 'cutInternals'),
             ConstraintViolationInterface::class => function (ConstraintViolationInterface $v, array $a) {
                 return array(
                     Caster::PREFIX_VIRTUAL.'root' => $v->getRoot(),

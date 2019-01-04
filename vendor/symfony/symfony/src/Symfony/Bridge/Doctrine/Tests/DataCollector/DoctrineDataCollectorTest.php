@@ -12,6 +12,7 @@
 namespace Symfony\Bridge\Doctrine\Tests\DataCollector;
 
 use Doctrine\DBAL\Platforms\MySqlPlatform;
+use Doctrine\DBAL\Version;
 use PHPUnit\Framework\TestCase;
 use Symfony\Bridge\Doctrine\DataCollector\DoctrineDataCollector;
 use Symfony\Component\HttpFoundation\Request;
@@ -101,6 +102,20 @@ class DoctrineDataCollectorTest extends TestCase
         $this->assertTrue($collectedQueries['default'][1]['explainable']);
     }
 
+    public function testReset()
+    {
+        $queries = array(
+            array('sql' => 'SELECT * FROM table1', 'params' => array(), 'types' => array(), 'executionMS' => 1),
+        );
+        $c = $this->createCollector($queries);
+        $c->collect(new Request(), new Response());
+
+        $c->reset();
+        $c->collect(new Request(), new Response());
+
+        $this->assertEquals(array('default' => array()), $c->getQueries());
+    }
+
     /**
      * @dataProvider paramProvider
      */
@@ -120,7 +135,7 @@ class DoctrineDataCollectorTest extends TestCase
 
     public function paramProvider()
     {
-        return array(
+        $tests = array(
             array('some value', array(), 'some value', true),
             array(1, array(), 1, true),
             array(true, array(), true, true),
@@ -135,6 +150,13 @@ class DoctrineDataCollectorTest extends TestCase
                 false,
             ),
         );
+
+        if (version_compare(Version::VERSION, '2.6', '>=')) {
+            $tests[] = array('this is not a date', array('date'), 'this is not a date', false);
+            $tests[] = array(new \stdClass(), array('date'), 'Object(stdClass)', false);
+        }
+
+        return $tests;
     }
 
     private function createCollector($queries)

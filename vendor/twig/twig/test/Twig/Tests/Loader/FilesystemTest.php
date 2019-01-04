@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-class Twig_Tests_Loader_FilesystemTest extends PHPUnit_Framework_TestCase
+class Twig_Tests_Loader_FilesystemTest extends \PHPUnit\Framework\TestCase
 {
     public function testGetSourceContext()
     {
-        $path = dirname(__FILE__).'/../Fixtures';
+        $path = __DIR__.'/../Fixtures';
         $loader = new Twig_Loader_Filesystem(array($path));
         $this->assertEquals('errors/index.html', $loader->getSourceContext('errors/index.html')->getName());
         $this->assertEquals(realpath($path.'/errors/index.html'), realpath($loader->getSourceContext('errors/index.html')->getPath()));
@@ -217,7 +217,22 @@ class Twig_Tests_Loader_FilesystemTest extends PHPUnit_Framework_TestCase
         // phar-sample.phar was created with the following script:
         // $f = new Phar('phar-test.phar');
         // $f->addFromString('hello.twig', 'hello from phar');
-        $loader->addPath('phar://'.dirname(__FILE__).'/Fixtures/phar/phar-sample.phar');
+        $loader->addPath('phar://'.__DIR__.'/Fixtures/phar/phar-sample.phar');
         $this->assertSame('hello from phar', $loader->getSourceContext('hello.twig')->getCode());
+    }
+
+    public function testTemplateExistsAlwaysReturnsBool()
+    {
+        $loader = new Twig_Loader_Filesystem(array());
+        $this->assertFalse($loader->exists("foo\0.twig"));
+        $this->assertFalse($loader->exists('../foo.twig'));
+        $this->assertFalse($loader->exists('@foo'));
+        $this->assertFalse($loader->exists('foo'));
+        $this->assertFalse($loader->exists('@foo/bar.twig'));
+
+        $loader->addPath(__DIR__.'/Fixtures/normal');
+        $this->assertTrue($loader->exists('index.html'));
+        $loader->addPath(__DIR__.'/Fixtures/normal', 'foo');
+        $this->assertTrue($loader->exists('@foo/index.html'));
     }
 }

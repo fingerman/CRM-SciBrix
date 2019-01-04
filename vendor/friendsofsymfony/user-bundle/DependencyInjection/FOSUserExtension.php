@@ -40,6 +40,9 @@ class FOSUserExtension extends Extension
         ),
     );
 
+    private $mailerNeeded = false;
+    private $sessionNeeded = false;
+
     /**
      * {@inheritdoc}
      */
@@ -67,7 +70,7 @@ class FOSUserExtension extends Extension
             $definition->setFactory(array(new Reference('fos_user.doctrine_registry'), 'getManager'));
         }
 
-        foreach (array('validator', 'security', 'util', 'mailer', 'listeners') as $basename) {
+        foreach (array('validator', 'security', 'util', 'mailer', 'listeners', 'commands') as $basename) {
             $loader->load(sprintf('%s.xml', $basename));
         }
 
@@ -76,14 +79,14 @@ class FOSUserExtension extends Extension
         }
 
         if ($config['use_flash_notifications']) {
+            $this->sessionNeeded = true;
             $loader->load('flash_notifications.xml');
         }
 
-        $container->setAlias('fos_user.mailer', $config['service']['mailer']);
         $container->setAlias('fos_user.util.email_canonicalizer', $config['service']['email_canonicalizer']);
         $container->setAlias('fos_user.util.username_canonicalizer', $config['service']['username_canonicalizer']);
         $container->setAlias('fos_user.util.token_generator', $config['service']['token_generator']);
-        $container->setAlias('fos_user.user_manager', $config['service']['user_manager']);
+        $container->setAlias('fos_user.user_manager', new Alias($config['service']['user_manager'], true));
 
         if ($config['use_listener'] && isset(self::$doctrineDrivers[$config['db_driver']])) {
             $listenerDefinition = $container->getDefinition('fos_user.user_listener');
@@ -125,115 +128,23 @@ class FOSUserExtension extends Extension
         if (!empty($config['group'])) {
             $this->loadGroups($config['group'], $container, $loader, $config['db_driver']);
         }
-    }
 
-    /**
-     * @param array            $config
-     * @param ContainerBuilder $container
-     * @param XmlFileLoader    $loader
-     */
-    private function loadProfile(array $config, ContainerBuilder $container, XmlFileLoader $loader)
-    {
-        $loader->load('profile.xml');
-
-        $this->remapParametersNamespaces($config, $container, array(
-            'form' => 'fos_user.profile.form.%s',
-        ));
-    }
-
-    /**
-     * @param array            $config
-     * @param ContainerBuilder $container
-     * @param XmlFileLoader    $loader
-     * @param array            $fromEmail
-     */
-    private function loadRegistration(array $config, ContainerBuilder $container, XmlFileLoader $loader, array $fromEmail)
-    {
-        $loader->load('registration.xml');
-
-        if ($config['confirmation']['enabled']) {
-            $loader->load('email_confirmation.xml');
+        if ($this->mailerNeeded) {
+            $container->setAlias('fos_user.mailer', $config['service']['mailer']);
         }
 
-        if (isset($config['confirmation']['from_email'])) {
-            // overwrite the global one
-            $fromEmail = $config['confirmation']['from_email'];
-            unset($config['confirmation']['from_email']);
+        if ($this->sessionNeeded) {
+            // Use a private alias rather than a parameter, to avoid leaking it at runtime (the private alias will be removed)
+            $container->setAlias('fos_user.session', new Alias('session', false));
         }
-        $container->setParameter('fos_user.registration.confirmation.from_email', array($fromEmail['address'] => $fromEmail['sender_name']));
-
-        $this->remapParametersNamespaces($config, $container, array(
-            'confirmation' => 'fos_user.registration.confirmation.%s',
-            'form' => 'fos_user.registration.form.%s',
-        ));
     }
 
     /**
-     * @param array            $config
-     * @param ContainerBuilder $container
-     * @param XmlFileLoader    $loader
+     * {@inheritdoc}
      */
-    private function loadChangePassword(array $config, ContainerBuilder $container, XmlFileLoader $loader)
+    public function getNamespace()
     {
-        $loader->load('change_password.xml');
-
-        $this->remapParametersNamespaces($config, $container, array(
-            'form' => 'fos_user.change_password.form.%s',
-        ));
-    }
-
-    /**
-     * @param array            $config
-     * @param ContainerBuilder $container
-     * @param XmlFileLoader    $loader
-     * @param array            $fromEmail
-     */
-    private function loadResetting(array $config, ContainerBuilder $container, XmlFileLoader $loader, array $fromEmail)
-    {
-        $loader->load('resetting.xml');
-
-        if (isset($config['email']['from_email'])) {
-            // overwrite the global one
-            $fromEmail = $config['email']['from_email'];
-            unset($config['email']['from_email']);
-        }
-        $container->setParameter('fos_user.resetting.email.from_email', array($fromEmail['address'] => $fromEmail['sender_name']));
-
-        $this->remapParametersNamespaces($config, $container, array(
-            '' => array(
-                'retry_ttl' => 'fos_user.resetting.retry_ttl',
-                'token_ttl' => 'fos_user.resetting.token_ttl',
-            ),
-            'email' => 'fos_user.resetting.email.%s',
-            'form' => 'fos_user.resetting.form.%s',
-        ));
-    }
-
-    /**
-     * @param array            $config
-     * @param ContainerBuilder $container
-     * @param XmlFileLoader    $loader
-     * @param string           $dbDriver
-     */
-    private function loadGroups(array $config, ContainerBuilder $container, XmlFileLoader $loader, $dbDriver)
-    {
-        $loader->load('group.xml');
-        if ('custom' !== $dbDriver) {
-            if (isset(self::$doctrineDrivers[$dbDriver])) {
-                $loader->load('doctrine_group.xml');
-            } else {
-                $loader->load(sprintf('%s_group.xml', $dbDriver));
-            }
-        }
-
-        $container->setAlias('fos_user.group_manager', $config['group_manager']);
-
-        $this->remapParametersNamespaces($config, $container, array(
-            '' => array(
-                'group_class' => 'fos_user.model.group.class',
-            ),
-            'form' => 'fos_user.group.form.%s',
-        ));
+        return 'http://friendsofsymfony.github.io/schema/dic/user';
     }
 
     /**
@@ -277,10 +188,115 @@ class FOSUserExtension extends Extension
     }
 
     /**
-     * {@inheritdoc}
+     * @param array            $config
+     * @param ContainerBuilder $container
+     * @param XmlFileLoader    $loader
      */
-    public function getNamespace()
+    private function loadProfile(array $config, ContainerBuilder $container, XmlFileLoader $loader)
     {
-        return 'http://friendsofsymfony.github.io/schema/dic/user';
+        $loader->load('profile.xml');
+
+        $this->remapParametersNamespaces($config, $container, array(
+            'form' => 'fos_user.profile.form.%s',
+        ));
+    }
+
+    /**
+     * @param array            $config
+     * @param ContainerBuilder $container
+     * @param XmlFileLoader    $loader
+     * @param array            $fromEmail
+     */
+    private function loadRegistration(array $config, ContainerBuilder $container, XmlFileLoader $loader, array $fromEmail)
+    {
+        $loader->load('registration.xml');
+        $this->sessionNeeded = true;
+
+        if ($config['confirmation']['enabled']) {
+            $this->mailerNeeded = true;
+            $loader->load('email_confirmation.xml');
+        }
+
+        if (isset($config['confirmation']['from_email'])) {
+            // overwrite the global one
+            $fromEmail = $config['confirmation']['from_email'];
+            unset($config['confirmation']['from_email']);
+        }
+        $container->setParameter('fos_user.registration.confirmation.from_email', array($fromEmail['address'] => $fromEmail['sender_name']));
+
+        $this->remapParametersNamespaces($config, $container, array(
+            'confirmation' => 'fos_user.registration.confirmation.%s',
+            'form' => 'fos_user.registration.form.%s',
+        ));
+    }
+
+    /**
+     * @param array            $config
+     * @param ContainerBuilder $container
+     * @param XmlFileLoader    $loader
+     */
+    private function loadChangePassword(array $config, ContainerBuilder $container, XmlFileLoader $loader)
+    {
+        $loader->load('change_password.xml');
+
+        $this->remapParametersNamespaces($config, $container, array(
+            'form' => 'fos_user.change_password.form.%s',
+        ));
+    }
+
+    /**
+     * @param array            $config
+     * @param ContainerBuilder $container
+     * @param XmlFileLoader    $loader
+     * @param array            $fromEmail
+     */
+    private function loadResetting(array $config, ContainerBuilder $container, XmlFileLoader $loader, array $fromEmail)
+    {
+        $this->mailerNeeded = true;
+        $loader->load('resetting.xml');
+
+        if (isset($config['email']['from_email'])) {
+            // overwrite the global one
+            $fromEmail = $config['email']['from_email'];
+            unset($config['email']['from_email']);
+        }
+        $container->setParameter('fos_user.resetting.email.from_email', array($fromEmail['address'] => $fromEmail['sender_name']));
+
+        $this->remapParametersNamespaces($config, $container, array(
+            '' => array(
+                'retry_ttl' => 'fos_user.resetting.retry_ttl',
+                'token_ttl' => 'fos_user.resetting.token_ttl',
+            ),
+            'email' => 'fos_user.resetting.email.%s',
+            'form' => 'fos_user.resetting.form.%s',
+        ));
+    }
+
+    /**
+     * @param array            $config
+     * @param ContainerBuilder $container
+     * @param XmlFileLoader    $loader
+     * @param string           $dbDriver
+     */
+    private function loadGroups(array $config, ContainerBuilder $container, XmlFileLoader $loader, $dbDriver)
+    {
+        $loader->load('group.xml');
+        if ('custom' !== $dbDriver) {
+            if (isset(self::$doctrineDrivers[$dbDriver])) {
+                $loader->load('doctrine_group.xml');
+            } else {
+                $loader->load(sprintf('%s_group.xml', $dbDriver));
+            }
+        }
+
+        $container->setAlias('fos_user.group_manager', new Alias($config['group_manager'], true));
+        $container->setAlias('FOS\UserBundle\Model\GroupManagerInterface', new Alias('fos_user.group_manager', false));
+
+        $this->remapParametersNamespaces($config, $container, array(
+            '' => array(
+                'group_class' => 'fos_user.model.group.class',
+            ),
+            'form' => 'fos_user.group.form.%s',
+        ));
     }
 }

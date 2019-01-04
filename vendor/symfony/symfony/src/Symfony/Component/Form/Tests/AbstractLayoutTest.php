@@ -11,9 +11,9 @@
 
 namespace Symfony\Component\Form\Tests;
 
+use Symfony\Component\Form\Extension\Csrf\CsrfExtension;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\Form\Extension\Csrf\CsrfExtension;
 use Symfony\Component\Form\Test\FormIntegrationTestCase;
 
 abstract class AbstractLayoutTest extends FormIntegrationTestCase
@@ -23,7 +23,7 @@ abstract class AbstractLayoutTest extends FormIntegrationTestCase
 
     protected function setUp()
     {
-        if (!extension_loaded('intl')) {
+        if (!\extension_loaded('intl')) {
             $this->markTestSkipped('Extension intl is required.');
         }
 
@@ -125,7 +125,7 @@ abstract class AbstractLayoutTest extends FormIntegrationTestCase
 
     abstract protected function renderEnd(FormView $view, array $vars = array());
 
-    abstract protected function setTheme(FormView $view, array $themes);
+    abstract protected function setTheme(FormView $view, array $themes, $useDefaultThemes = true);
 
     public function testLabel()
     {
@@ -1433,9 +1433,9 @@ abstract class AbstractLayoutTest extends FormIntegrationTestCase
 
         $this->assertWidgetMatchesXpath($form->createView(), array(),
 '/input
-    [@type="datetime"]
+    [@type="datetime-local"]
     [@name="name"]
-    [@value="2011-02-03T04:05:06Z"]
+    [@value="2011-02-03T04:05:06"]
 '
         );
     }
@@ -1453,9 +1453,9 @@ abstract class AbstractLayoutTest extends FormIntegrationTestCase
 
         $this->assertWidgetMatchesXpath($form->createView(), array(),
 '/input
-    [@type="datetime"]
+    [@type="datetime-local"]
     [@name="name"]
-    [@value="2011-02-03T04:05:06Z"]
+    [@value="2011-02-03T04:05:06"]
 '
         );
     }
@@ -2462,5 +2462,33 @@ abstract class AbstractLayoutTest extends FormIntegrationTestCase
 
         $this->assertMatchesXpath($html, '/form//input[@title="Foo"]');
         $this->assertMatchesXpath($html, '/form//input[@placeholder="Bar"]');
+    }
+
+    public function testTel()
+    {
+        $tel = '0102030405';
+        $form = $this->factory->createNamed('name', 'Symfony\Component\Form\Extension\Core\Type\TelType', $tel);
+
+        $this->assertWidgetMatchesXpath($form->createView(), array(),
+            '/input
+    [@type="tel"]
+    [@name="name"]
+    [@value="0102030405"]
+'
+        );
+    }
+
+    public function testColor()
+    {
+        $color = '#0000ff';
+        $form = $this->factory->createNamed('name', 'Symfony\Component\Form\Extension\Core\Type\ColorType', $color);
+
+        $this->assertWidgetMatchesXpath($form->createView(), array(),
+            '/input
+    [@type="color"]
+    [@name="name"]
+    [@value="#0000ff"]
+'
+        );
     }
 }

@@ -160,6 +160,8 @@ final class Twig_ExtensionSet
             throw new LogicException(sprintf('Unable to register extension "%s" as it is already registered.', $class));
         }
 
+        // For BC/FC with namespaced aliases
+        $class = (new ReflectionClass($class))->name;
         $this->extensions[$class] = $extension;
     }
 
@@ -382,6 +384,19 @@ final class Twig_ExtensionSet
 
         if (isset($this->tests[$name])) {
             return $this->tests[$name];
+        }
+
+        foreach ($this->tests as $pattern => $test) {
+            $pattern = str_replace('\\*', '(.*?)', preg_quote($pattern, '#'), $count);
+
+            if ($count) {
+                if (preg_match('#^'.$pattern.'$#', $name, $matches)) {
+                    array_shift($matches);
+                    $test->setArguments($matches);
+
+                    return $test;
+                }
+            }
         }
 
         return false;

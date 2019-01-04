@@ -19,12 +19,6 @@ profile:
     show:
         username: Benutzername
         email: E-Mail
-        firstname: Vorname
-        familyname: Familie
-        phoneBusiness: Tel.
-        phonePrivate: Tel. (privat)
-        address: Anschrift
-        note: Notiz
     edit:
         submit: 'Benutzer aktualisieren'
     flash:

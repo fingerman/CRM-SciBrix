@@ -5,18 +5,17 @@
         xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <import
-        resource="@FOSUserBundle/Resources/config/routing/security.xml"
-        prefix="/crm" />
+        resource="@FOSUserBundle/Resources/config/routing/security.xml" />
     <import
         resource="@FOSUserBundle/Resources/config/routing/profile.xml"
-        prefix="/crm/profile" />
+        prefix="/profile" />
     <import
         resource="@FOSUserBundle/Resources/config/routing/registration.xml"
-        prefix="/crm/register" />
+        prefix="/register" />
     <import
         resource="@FOSUserBundle/Resources/config/routing/resetting.xml"
-        prefix="/crm/resetting" />
+        prefix="/resetting" />
     <import
         resource="@FOSUserBundle/Resources/config/routing/change_password.xml"
-        prefix="/crm/profile" />
+        prefix="/profile" />
 </routes>

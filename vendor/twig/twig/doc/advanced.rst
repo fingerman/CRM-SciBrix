@@ -358,9 +358,12 @@ The ``node`` sub-node will contain an expression of ``my_value``. Node-based
 tests also have access to the ``arguments`` node. This node will contain the
 various other arguments that have been provided to your test.
 
+.. versionadded:: 2.6
+    Dynamic tests support was added in Twig 2.6.
+
 If you want to pass a variable number of positional or named arguments to the
-test, set the ``is_variadic`` option to ``true``. Tests also support dynamic
-name feature as filters and functions.
+test, set the ``is_variadic`` option to ``true``. Tests support dynamic
+names (see dynamic filters and functions for the syntax).
 
 Tags
 ----
@@ -530,7 +533,7 @@ to host all the specific tags and filters you want to add to Twig.
 .. note::
 
     Before writing your own extensions, have a look at the Twig official
-    extension repository: http://github.com/twigphp/Twig-extensions.
+    extension repository: https://github.com/twigphp/Twig-extensions.
 
 An extension is a class that implements the following interface::
 
@@ -755,7 +758,7 @@ The simplest way to use methods is to define them on the extension itself::
 
         public function rot13($value)
         {
-            return $rot13Provider->rot13($value);
+            return $this->rot13Provider->rot13($value);
         }
     }
 
@@ -804,7 +807,7 @@ It is now possible to move the runtime logic to a new
 
         public function rot13($value)
         {
-            return $rot13Provider->rot13($value);
+            return $this->rot13Provider->rot13($value);
         }
     }
 
@@ -912,6 +915,6 @@ Testing the node visitors can be complex, so extend your test cases from
 ``Twig_Test_NodeTestCase``. Examples can be found in the Twig repository
 `tests/Twig/Node`_ directory.
 
-.. _`rot13`:                   http://www.php.net/manual/en/function.str-rot13.php
-.. _`tests/Twig/Fixtures`:     https://github.com/twigphp/Twig/tree/master/test/Twig/Tests/Fixtures
-.. _`tests/Twig/Node`:         https://github.com/twigphp/Twig/tree/master/test/Twig/Tests/Node
+.. _`rot13`:               https://secure.php.net/manual/en/function.str-rot13.php
+.. _`tests/Twig/Fixtures`: https://github.com/twigphp/Twig/tree/2.x/test/Twig/Tests/Fixtures
+.. _`tests/Twig/Node`:     https://github.com/twigphp/Twig/tree/2.x/test/Twig/Tests/Node

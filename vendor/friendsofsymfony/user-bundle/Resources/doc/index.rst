@@ -4,15 +4,18 @@ Getting Started With FOSUserBundle
 The Symfony Security component provides a flexible security framework that
 allows you to load users from configuration, a database, or anywhere else
 you can imagine. The FOSUserBundle builds on top of this to make it quick
-and easy to store users in a database.
+and easy to store users in a database, as well as functionality for registration,
+reset password and a profile page.
 
 So, if you need to persist and fetch the users in your system to and from
 a database, then you're in the right place.
 
+For a video tutorial, check out `FOSUserBundle FTW`_ by KnpUniversity.
+
 Prerequisites
 -------------
 
-This version of the bundle requires Symfony 2.7+. If you are using an older
+This version of the bundle requires Symfony 2.8+. If you are using an older
 Symfony version, please use the 1.3.x releases of the bundle.
 
 Translations
@@ -274,8 +277,6 @@ in your application:
                 form_login:
                     provider: fos_userbundle
                     csrf_token_generator: security.csrf.token_manager
-                    # if you are using Symfony < 2.8, use the following config instead:
-                    # csrf_provider: form.csrf_provider
 
                 logout:       true
                 anonymous:    true
@@ -440,7 +441,6 @@ The following documents are available:
 
     overriding_templates
     controller_events
-    overriding_controllers
     overriding_forms
     user_manager
     command_line_tools
@@ -459,3 +459,4 @@ The following documents are available:
 .. _security component documentation: https://symfony.com/doc/current/book/security.html
 .. _Symfony documentation: https://symfony.com/doc/current/book/translation.html
 .. _TypehintableBehavior: https://github.com/willdurand/TypehintableBehavior
+.. _FOSUserBundle FTW: https://knpuniversity.com/screencast/fosuserbundle

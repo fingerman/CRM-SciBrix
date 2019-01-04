@@ -11,15 +11,18 @@
 
 namespace Symfony\Bundle\FrameworkBundle\Console;
 
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\Console\Application as BaseApplication;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\ConsoleOutputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\HttpKernel\KernelInterface;
-use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Debug\Exception\FatalThrowableError;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
@@ -28,6 +31,7 @@ class Application extends BaseApplication
 {
     private $kernel;
     private $commandsRegistered = false;
+    private $registrationErrors = array();
 
     public function __construct(KernelInterface $kernel)
     {
@@ -59,17 +63,27 @@ class Application extends BaseApplication
     {
         $this->kernel->boot();
 
-        $container = $this->kernel->getContainer();
+        $this->setDispatcher($this->kernel->getContainer()->get('event_dispatcher'));
 
-        foreach ($this->all() as $command) {
-            if ($command instanceof ContainerAwareInterface) {
-                $command->setContainer($container);
-            }
+        $this->registerCommands();
+
+        if ($this->registrationErrors) {
+            $this->renderRegistrationErrors($input, $output);
         }
 
-        $this->setDispatcher($container->get('event_dispatcher'));
-
         return parent::doRun($input, $output);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function doRunCommand(Command $command, InputInterface $input, OutputInterface $output)
+    {
+        if ($this->registrationErrors) {
+            $this->renderRegistrationErrors($input, $output);
+        }
+
+        return parent::doRunCommand($command, $input, $output);
     }
 
     /**
@@ -89,7 +103,13 @@ class Application extends BaseApplication
     {
         $this->registerCommands();
 
-        return parent::get($name);
+        $command = parent::get($name);
+
+        if ($command instanceof ContainerAwareInterface) {
+            $command->setContainer($this->kernel->getContainer());
+        }
+
+        return $command;
     }
 
     /**
@@ -131,14 +151,48 @@ class Application extends BaseApplication
 
         foreach ($this->kernel->getBundles() as $bundle) {
             if ($bundle instanceof Bundle) {
-                $bundle->registerCommands($this);
+                try {
+                    $bundle->registerCommands($this);
+                } catch (\Exception $e) {
+                    $this->registrationErrors[] = $e;
+                } catch (\Throwable $e) {
+                    $this->registrationErrors[] = new FatalThrowableError($e);
+                }
             }
         }
 
+        if ($container->has('console.command_loader')) {
+            $this->setCommandLoader($container->get('console.command_loader'));
+        }
+
         if ($container->hasParameter('console.command.ids')) {
+            $lazyCommandIds = $container->hasParameter('console.lazy_command.ids') ? $container->getParameter('console.lazy_command.ids') : array();
             foreach ($container->getParameter('console.command.ids') as $id) {
-                $this->add($container->get($id));
+                if (!isset($lazyCommandIds[$id])) {
+                    try {
+                        $this->add($container->get($id));
+                    } catch (\Exception $e) {
+                        $this->registrationErrors[] = $e;
+                    } catch (\Throwable $e) {
+                        $this->registrationErrors[] = new FatalThrowableError($e);
+                    }
+                }
             }
         }
+    }
+
+    private function renderRegistrationErrors(InputInterface $input, OutputInterface $output)
+    {
+        if ($output instanceof ConsoleOutputInterface) {
+            $output = $output->getErrorOutput();
+        }
+
+        (new SymfonyStyle($input, $output))->warning('Some commands could not be registered:');
+
+        foreach ($this->registrationErrors as $error) {
+            $this->doRenderException($error, $output);
+        }
+
+        $this->registrationErrors = array();
     }
 }

@@ -17,12 +17,13 @@ use Symfony\Component\PropertyAccess\Exception\NoSuchIndexException;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\PropertyAccess\Tests\Fixtures\ReturnTyped;
 use Symfony\Component\PropertyAccess\Tests\Fixtures\TestClass;
+use Symfony\Component\PropertyAccess\Tests\Fixtures\TestClassIsWritable;
 use Symfony\Component\PropertyAccess\Tests\Fixtures\TestClassMagicCall;
 use Symfony\Component\PropertyAccess\Tests\Fixtures\TestClassMagicGet;
-use Symfony\Component\PropertyAccess\Tests\Fixtures\Ticket5775Object;
 use Symfony\Component\PropertyAccess\Tests\Fixtures\TestClassSetValue;
-use Symfony\Component\PropertyAccess\Tests\Fixtures\TestClassIsWritable;
 use Symfony\Component\PropertyAccess\Tests\Fixtures\TestClassTypeErrorInsideCall;
+use Symfony\Component\PropertyAccess\Tests\Fixtures\TestSingularAndPluralProps;
+use Symfony\Component\PropertyAccess\Tests\Fixtures\Ticket5775Object;
 use Symfony\Component\PropertyAccess\Tests\Fixtures\TypeHinted;
 
 class PropertyAccessorTest extends TestCase
@@ -540,6 +541,17 @@ class PropertyAccessorTest extends TestCase
         $this->propertyAccessor->setValue($object, 'date', 'This is a string, \DateTime expected.');
     }
 
+    /**
+     * @expectedException \Symfony\Component\PropertyAccess\Exception\InvalidArgumentException
+     * @expectedExceptionMessage Expected argument of type "DateTime", "NULL" given
+     */
+    public function testThrowTypeErrorWithNullArgument()
+    {
+        $object = new TypeHinted();
+
+        $this->propertyAccessor->setValue($object, 'date', null);
+    }
+
     public function testSetTypeHint()
     {
         $date = new \DateTime();
@@ -568,6 +580,19 @@ class PropertyAccessorTest extends TestCase
         $propertyAccessor->setValue($obj, 'publicGetSetter', 'bar');
         $propertyAccessor->setValue($obj, 'publicGetSetter', 'baz');
         $this->assertEquals('baz', $propertyAccessor->getValue($obj, 'publicGetSetter'));
+    }
+
+    public function testAttributeWithSpecialChars()
+    {
+        $obj = new \stdClass();
+        $obj->{'@foo'} = 'bar';
+        $obj->{'a/b'} = '1';
+        $obj->{'a%2Fb'} = '2';
+
+        $propertyAccessor = new PropertyAccessor(false, false, new ArrayAdapter());
+        $this->assertSame('bar', $propertyAccessor->getValue($obj, '@foo'));
+        $this->assertSame('1', $propertyAccessor->getValue($obj, 'a/b'));
+        $this->assertSame('2', $propertyAccessor->getValue($obj, 'a%2Fb'));
     }
 
     /**
@@ -662,5 +687,59 @@ class PropertyAccessorTest extends TestCase
         $object = new ReturnTyped();
 
         $this->propertyAccessor->setValue($object, 'foos', array(new \DateTime()));
+    }
+
+    /**
+     * @requires PHP 7
+     *
+     * @expectedException \TypeError
+     */
+    public function testDoNotDiscardReturnTypeErrorWhenWriterMethodIsMisconfigured()
+    {
+        $object = new ReturnTyped();
+
+        $this->propertyAccessor->setValue($object, 'name', 'foo');
+    }
+
+    public function testWriteToSingularPropertyWhilePluralOneExists()
+    {
+        $object = new TestSingularAndPluralProps();
+
+        $this->propertyAccessor->isWritable($object, 'email'); //cache access info
+        $this->propertyAccessor->setValue($object, 'email', 'test@email.com');
+
+        self::assertEquals('test@email.com', $object->getEmail());
+        self::assertEmpty($object->getEmails());
+    }
+
+    public function testWriteToPluralPropertyWhileSingularOneExists()
+    {
+        $object = new TestSingularAndPluralProps();
+
+        $this->propertyAccessor->isWritable($object, 'emails'); //cache access info
+        $this->propertyAccessor->setValue($object, 'emails', array('test@email.com'));
+
+        $this->assertEquals(array('test@email.com'), $object->getEmails());
+        $this->assertNull($object->getEmail());
+    }
+
+    public function testAdderAndRemoverArePreferredOverSetter()
+    {
+        $object = new TestPluralAdderRemoverAndSetter();
+
+        $this->propertyAccessor->isWritable($object, 'emails'); //cache access info
+        $this->propertyAccessor->setValue($object, 'emails', array('test@email.com'));
+
+        $this->assertEquals(array('test@email.com'), $object->getEmails());
+    }
+
+    public function testAdderAndRemoverArePreferredOverSetterForSameSingularAndPlural()
+    {
+        $object = new TestPluralAdderRemoverAndSetterSameSingularAndPlural();
+
+        $this->propertyAccessor->isWritable($object, 'aircraft'); //cache access info
+        $this->propertyAccessor->setValue($object, 'aircraft', array('aeroplane'));
+
+        $this->assertEquals(array('aeroplane'), $object->getAircraft());
     }
 }

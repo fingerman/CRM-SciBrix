@@ -25,6 +25,11 @@
         <service id="serializer.property_accessor" alias="property_accessor" />
 
         <!-- Normalizer -->
+        <service id="serializer.normalizer.dateinterval" class="Symfony\Component\Serializer\Normalizer\DateIntervalNormalizer">
+            <!-- Run before serializer.normalizer.object -->
+            <tag name="serializer.normalizer" priority="-915" />
+        </service>
+
         <service id="serializer.normalizer.data_uri" class="Symfony\Component\Serializer\Normalizer\DataUriNormalizer">
             <!-- Run before serializer.normalizer.object -->
             <tag name="serializer.normalizer" priority="-920" />
@@ -67,6 +72,8 @@
             <argument>null</argument>
         </service>
 
+        <service id="Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactoryInterface" alias="serializer.mapping.class_metadata_factory" />
+
         <!-- Cache -->
         <service id="serializer.mapping.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\SerializerCacheWarmer">
             <argument type="collection" /><!-- Loaders injected by the extension -->
@@ -75,7 +82,7 @@
             <tag name="kernel.cache_warmer" />
         </service>
 
-        <service id="serializer.mapping.cache.symfony" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="true">
+        <service id="serializer.mapping.cache.symfony" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter">
             <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create" />
             <argument>%serializer.mapping.cache.file%</argument>
             <argument type="service" id="cache.serializer" />

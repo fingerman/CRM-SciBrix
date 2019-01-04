@@ -1,16 +1,5 @@
 <?php
 
-/*
- * This file is part of the Doctrine MigrationsBundle
- *
- * The code was originally distributed inside the Symfony framework.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- * (c) Doctrine Project, Benjamin Eberlei <kontakt@beberlei.de>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace Doctrine\Bundle\MigrationsBundle\DependencyInjection;
 
@@ -31,8 +20,14 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('doctrine_migrations', 'array');
+        $treeBuilder = new TreeBuilder('doctrine_migrations');
+
+        if (method_exists($treeBuilder, 'getRootNode')) {
+            $rootNode = $treeBuilder->getRootNode();
+        } else {
+            // BC layer for symfony/config 4.1 and older
+            $rootNode = $treeBuilder->root('doctrine_migrations', 'array');
+        }
 
         $organizeMigrationModes = $this->getOrganizeMigrationsModes();
 
@@ -42,6 +37,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('namespace')->defaultValue('Application\Migrations')->cannotBeEmpty()->end()
                 ->scalarNode('table_name')->defaultValue('migration_versions')->cannotBeEmpty()->end()
                 ->scalarNode('name')->defaultValue('Application Migrations')->end()
+                ->scalarNode('custom_template')->defaultValue(null)->end()
                 ->scalarNode('organize_migrations')->defaultValue(false)
                     ->info('Organize migrations mode. Possible values are: "BY_YEAR", "BY_YEAR_AND_MONTH", false')
                     ->validate()

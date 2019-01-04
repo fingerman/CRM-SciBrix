@@ -195,18 +195,18 @@ class Parser
                     default:
                         if ('(' === $this->stream->current->value) {
                             if (false === isset($this->functions[$token->value])) {
-                                throw new SyntaxError(sprintf('The function "%s" does not exist', $token->value), $token->cursor, $this->stream->getExpression());
+                                throw new SyntaxError(sprintf('The function "%s" does not exist', $token->value), $token->cursor, $this->stream->getExpression(), $token->value, array_keys($this->functions));
                             }
 
                             $node = new Node\FunctionNode($token->value, $this->parseArguments());
                         } else {
-                            if (!in_array($token->value, $this->names, true)) {
-                                throw new SyntaxError(sprintf('Variable "%s" is not valid', $token->value), $token->cursor, $this->stream->getExpression());
+                            if (!\in_array($token->value, $this->names, true)) {
+                                throw new SyntaxError(sprintf('Variable "%s" is not valid', $token->value), $token->cursor, $this->stream->getExpression(), $token->value, $this->names);
                             }
 
                             // is the name used in the compiled code different
                             // from the name used in the expression?
-                            if (is_int($name = array_search($token->value, $this->names))) {
+                            if (\is_int($name = array_search($token->value, $this->names))) {
                                 $name = $token->value;
                             }
 

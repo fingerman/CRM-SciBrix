@@ -16,6 +16,7 @@ use Symfony\Bundle\FrameworkBundle\DependencyInjection\Configuration;
 use Symfony\Bundle\FullStack;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\Definition\Processor;
+use Symfony\Component\Lock\Store\SemaphoreStore;
 
 class ConfigurationTest extends TestCase
 {
@@ -78,7 +79,57 @@ class ConfigurationTest extends TestCase
 
     /**
      * @group legacy
+     * @dataProvider getTestValidSessionName
+     */
+    public function testValidSessionName($sessionName)
+    {
+        $processor = new Processor();
+        $config = $processor->processConfiguration(
+            new Configuration(true),
+            array(array('session' => array('name' => $sessionName)))
+        );
+
+        $this->assertEquals($sessionName, $config['session']['name']);
+    }
+
+    public function getTestValidSessionName()
+    {
+        return array(
+            array(null),
+            array('PHPSESSID'),
+            array('a&b'),
+            array(',_-!@#$%^*(){}:<>/?'),
+        );
+    }
+
+    /**
+     * @dataProvider getTestInvalidSessionName
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     */
+    public function testInvalidSessionName($sessionName)
+    {
+        $processor = new Processor();
+        $processor->processConfiguration(
+            new Configuration(true),
+            array(array('session' => array('name' => $sessionName)))
+        );
+    }
+
+    public function getTestInvalidSessionName()
+    {
+        return array(
+            array('a.b'),
+            array('a['),
+            array('a[]'),
+            array('a[b]'),
+            array('a=b'),
+            array('a+b'),
+        );
+    }
+
+    /**
      * @dataProvider getTestValidTrustedProxiesData
+     * @group legacy
      */
     public function testValidTrustedProxies($trustedProxies, $processedProxies)
     {
@@ -254,7 +305,9 @@ class ConfigurationTest extends TestCase
                 'enabled' => !class_exists(FullStack::class),
                 'fallbacks' => array('en'),
                 'logging' => true,
+                'formatter' => 'translator.formatter.default',
                 'paths' => array(),
+                'default_path' => '%kernel.project_dir%/translations',
             ),
             'validation' => array(
                 'enabled' => !class_exists(FullStack::class),
@@ -282,7 +335,7 @@ class ConfigurationTest extends TestCase
                 'throw_exception_on_invalid_index' => false,
             ),
             'property_info' => array(
-                'enabled' => false,
+                'enabled' => !class_exists(FullStack::class),
             ),
             'router' => array(
                 'enabled' => false,
@@ -298,6 +351,7 @@ class ConfigurationTest extends TestCase
                 'gc_probability' => 1,
                 'save_path' => '%kernel.cache_dir%/sessions',
                 'metadata_update_threshold' => '0',
+                'use_strict_mode' => true,
             ),
             'request' => array(
                 'enabled' => false,
@@ -330,13 +384,24 @@ class ConfigurationTest extends TestCase
                 'default_redis_provider' => 'redis://localhost',
                 'default_memcached_provider' => 'memcached://localhost',
             ),
-            'workflows' => array(),
+            'workflows' => array(
+                'enabled' => false,
+                'workflows' => array(),
+            ),
             'php_errors' => array(
                 'log' => true,
                 'throw' => true,
             ),
             'web_link' => array(
                 'enabled' => !class_exists(FullStack::class),
+            ),
+            'lock' => array(
+                'enabled' => !class_exists(FullStack::class),
+                'resources' => array(
+                    'default' => array(
+                        class_exists(SemaphoreStore::class) && SemaphoreStore::isSupported() ? 'semaphore' : 'flock',
+                    ),
+                ),
             ),
         );
     }

@@ -21,8 +21,6 @@ profile:
     show:
         username: Brugernavn
         email: E-mail
-        firstname: Vorname
-        familyname: Nachname
     edit:
         submit: Opdater
     flash:

@@ -11,17 +11,26 @@
 
 namespace FOS\UserBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use FOS\UserBundle\Util\UserManipulator;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
-/**
- * ChangePasswordCommand.
- */
-class ChangePasswordCommand extends ContainerAwareCommand
+class ChangePasswordCommand extends Command
 {
+    protected static $defaultName = 'fos:user:change-password';
+
+    private $userManipulator;
+
+    public function __construct(UserManipulator $userManipulator)
+    {
+        parent::__construct();
+
+        $this->userManipulator = $userManipulator;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -57,8 +66,7 @@ EOT
         $username = $input->getArgument('username');
         $password = $input->getArgument('password');
 
-        $manipulator = $this->getContainer()->get('fos_user.util.user_manipulator');
-        $manipulator->changePassword($username, $password);
+        $this->userManipulator->changePassword($username, $password);
 
         $output->writeln(sprintf('Changed password for user <comment>%s</comment>', $username));
     }

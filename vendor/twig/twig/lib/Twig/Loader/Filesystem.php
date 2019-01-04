@@ -162,7 +162,7 @@ class Twig_Loader_Filesystem implements Twig_LoaderInterface, Twig_ExistsLoaderI
 
     public function isFresh($name, $time)
     {
-        return filemtime($this->findTemplate($name)) <= $time;
+        return filemtime($this->findTemplate($name)) < $time;
     }
 
     /**
@@ -189,9 +189,17 @@ class Twig_Loader_Filesystem implements Twig_LoaderInterface, Twig_ExistsLoaderI
             throw new Twig_Error_Loader($this->errorCache[$name]);
         }
 
-        $this->validateName($name);
+        try {
+            $this->validateName($name);
 
-        list($namespace, $shortname) = $this->parseName($name);
+            list($namespace, $shortname) = $this->parseName($name);
+        } catch (Twig_Error_Loader $e) {
+            if (!$throw) {
+                return false;
+            }
+
+            throw $e;
+        }
 
         if (!isset($this->paths[$namespace])) {
             $this->errorCache[$name] = sprintf('There are no registered paths for namespace "%s".', $namespace);

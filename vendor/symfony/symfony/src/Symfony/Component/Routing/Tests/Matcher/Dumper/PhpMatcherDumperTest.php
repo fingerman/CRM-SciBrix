@@ -36,7 +36,7 @@ class PhpMatcherDumperTest extends TestCase
         parent::setUp();
 
         $this->matcherClass = uniqid('ProjectUrlMatcher');
-        $this->dumpPath = sys_get_temp_dir().DIRECTORY_SEPARATOR.'php_matcher.'.$this->matcherClass.'.php';
+        $this->dumpPath = sys_get_temp_dir().\DIRECTORY_SEPARATOR.'php_matcher.'.$this->matcherClass.'.php';
     }
 
     protected function tearDown()
@@ -76,7 +76,7 @@ class PhpMatcherDumperTest extends TestCase
                         ->setConstructorArgs(array(new RequestContext()))
                         ->getMock();
 
-        $matcher->expects($this->once())->method('redirect')->with('/foo%3Abar/', 'foo');
+        $matcher->expects($this->once())->method('redirect')->with('/foo%3Abar/', 'foo')->willReturn(array());
 
         $matcher->match('/foo%3Abar');
     }
@@ -354,7 +354,7 @@ class PhpMatcherDumperTest extends TestCase
             array('GET', 'HEAD')
         ));
         $headMatchCasesCollection->add('post_and_head', new Route(
-            '/post_and_get',
+            '/post_and_head',
             array(),
             array(),
             array(),
@@ -419,6 +419,7 @@ class PhpMatcherDumperTest extends TestCase
         $trailingSlashCollection->add('regex_not_trailing_slash_POST_method', new Route('/not-trailing/regex/post-method/{param}', array(), array(), array(), '', array(), array('POST')));
 
         return array(
+           array(new RouteCollection(), 'url_matcher0.php', array()),
            array($collection, 'url_matcher1.php', array()),
            array($redirectCollection, 'url_matcher2.php', array('base_class' => 'Symfony\Component\Routing\Tests\Fixtures\RedirectableUrlMatcher')),
            array($rootprefixCollection, 'url_matcher3.php', array()),
@@ -429,9 +430,6 @@ class PhpMatcherDumperTest extends TestCase
         );
     }
 
-    /**
-     * @param $dumper
-     */
     private function generateDumpedMatcher(RouteCollection $collection, $redirectableStub = false)
     {
         $options = array('class' => $this->matcherClass);

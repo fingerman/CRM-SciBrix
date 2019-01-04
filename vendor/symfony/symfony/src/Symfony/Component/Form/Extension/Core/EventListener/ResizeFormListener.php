@@ -11,10 +11,10 @@
 
 namespace Symfony\Component\Form\Extension\Core\EventListener;
 
-use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\Exception\UnexpectedTypeException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\Form\Exception\UnexpectedTypeException;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
 
 /**
@@ -32,11 +32,11 @@ class ResizeFormListener implements EventSubscriberInterface
     private $deleteEmpty;
 
     /**
-     * @param string $type
-     * @param array  $options
-     * @param bool   $allowAdd    Whether children could be added to the group
-     * @param bool   $allowDelete Whether children could be removed from the group
-     * @param bool   $deleteEmpty
+     * @param string        $type
+     * @param array         $options
+     * @param bool          $allowAdd    Whether children could be added to the group
+     * @param bool          $allowDelete Whether children could be removed from the group
+     * @param bool|callable $deleteEmpty
      */
     public function __construct($type, array $options = array(), $allowAdd = false, $allowDelete = false, $deleteEmpty = false)
     {
@@ -66,7 +66,7 @@ class ResizeFormListener implements EventSubscriberInterface
             $data = array();
         }
 
-        if (!is_array($data) && !($data instanceof \Traversable && $data instanceof \ArrayAccess)) {
+        if (!\is_array($data) && !($data instanceof \Traversable && $data instanceof \ArrayAccess)) {
             throw new UnexpectedTypeException($data, 'array or (\Traversable and \ArrayAccess)');
         }
 
@@ -92,7 +92,7 @@ class ResizeFormListener implements EventSubscriberInterface
             @trigger_error('Support for objects implementing both \Traversable and \ArrayAccess is deprecated since Symfony 3.1 and will be removed in 4.0. Use an array instead.', E_USER_DEPRECATED);
         }
 
-        if (!is_array($data) && !($data instanceof \Traversable && $data instanceof \ArrayAccess)) {
+        if (!\is_array($data) && !($data instanceof \Traversable && $data instanceof \ArrayAccess)) {
             $data = array();
         }
 
@@ -130,19 +130,20 @@ class ResizeFormListener implements EventSubscriberInterface
             $data = array();
         }
 
-        if (!is_array($data) && !($data instanceof \Traversable && $data instanceof \ArrayAccess)) {
+        if (!\is_array($data) && !($data instanceof \Traversable && $data instanceof \ArrayAccess)) {
             throw new UnexpectedTypeException($data, 'array or (\Traversable and \ArrayAccess)');
         }
 
         if ($this->deleteEmpty) {
-            $previousData = $event->getForm()->getData();
+            $previousData = $form->getData();
             /** @var FormInterface $child */
             foreach ($form as $name => $child) {
                 $isNew = !isset($previousData[$name]);
+                $isEmpty = \is_callable($this->deleteEmpty) ? \call_user_func($this->deleteEmpty, $child->getData()) : $child->isEmpty();
 
                 // $isNew can only be true if allowAdd is true, so we don't
                 // need to check allowAdd again
-                if ($child->isEmpty() && ($isNew || $this->allowDelete)) {
+                if ($isEmpty && ($isNew || $this->allowDelete)) {
                     unset($data[$name]);
                     $form->remove($name);
                 }

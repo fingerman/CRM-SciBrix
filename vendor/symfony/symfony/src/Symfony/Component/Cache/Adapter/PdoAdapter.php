@@ -12,9 +12,11 @@
 namespace Symfony\Component\Cache\Adapter;
 
 use Doctrine\DBAL\Connection;
+use Symfony\Component\Cache\Exception\InvalidArgumentException;
+use Symfony\Component\Cache\PruneableInterface;
 use Symfony\Component\Cache\Traits\PdoTrait;
 
-class PdoAdapter extends AbstractAdapter
+class PdoAdapter extends AbstractAdapter implements PruneableInterface
 {
     use PdoTrait;
 

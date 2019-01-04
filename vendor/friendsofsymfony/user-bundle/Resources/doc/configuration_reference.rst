@@ -19,12 +19,12 @@ All available configuration options are listed below with their default values.
             sender_name:    webmaster
         profile:
             form:
-                type:               FOS\UserBundle\Form\Type\ProfileFormType # or 'fos_user_profile' on Symfony < 2.8
+                type:               FOS\UserBundle\Form\Type\ProfileFormType
                 name:               fos_user_profile_form
-                validation_groups:  [Profile, Default]
+                validation_groups:  [Profile, Default]openssl_get_cipher_methods will be used. See http://php.net/manual/function.openssl-get-cipher-methods.php
         change_password:
             form:
-                type:               FOS\UserBundle\Form\Type\ChangePasswordFormType # or 'fos_user_change_password' on Symfony < 2.8
+                type:               FOS\UserBundle\Form\Type\ChangePasswordFormType
                 name:               fos_user_change_password_form
                 validation_groups:  [ChangePassword, Default]
         registration:
@@ -35,10 +35,11 @@ All available configuration options are listed below with their default values.
                 enabled:    false # change to true for required email confirmation
                 template:   '@FOSUser/Registration/email.txt.twig'
             form:
-                type:               FOS\UserBundle\Form\Type\RegistrationFormType # or 'fos_user_registration' on Symfony < 2.8
+                type:               FOS\UserBundle\Form\Type\RegistrationFormType
                 name:               fos_user_registration_form
                 validation_groups:  [Registration, Default]
         resetting:
+            retry_ttl: 7200 # Value in seconds, logic will use as hours
             token_ttl: 86400
             email:
                 from_email: # Use this node only if you don't want the global email address for the resetting email
@@ -46,7 +47,7 @@ All available configuration options are listed below with their default values.
                     sender_name:    ...
                 template:   '@FOSUser/Resetting/email.txt.twig'
             form:
-                type:               FOS\UserBundle\Form\Type\ResettingFormType # or 'fos_user_resetting' on Symfony < 2.8
+                type:               FOS\UserBundle\Form\Type\ResettingFormType
                 name:               fos_user_resetting_form
                 validation_groups:  [ResetPassword, Default]
         service:
@@ -59,6 +60,6 @@ All available configuration options are listed below with their default values.
             group_class:    ~ # Required when using groups
             group_manager:  fos_user.group_manager.default
             form:
-                type:               FOS\UserBundle\Form\Type\GroupFormType # or 'fos_user_group' on Symfony < 2.8
+                type:               FOS\UserBundle\Form\Type\GroupFormType
                 name:               fos_user_group_form
                 validation_groups:  [Registration, Default]

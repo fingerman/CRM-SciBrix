@@ -11,14 +11,14 @@
 
 namespace Symfony\Component\HttpKernel\Fragment;
 
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Controller\ControllerReference;
+use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpKernel\HttpCache\SubRequestHandler;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
-use Symfony\Component\HttpKernel\Controller\ControllerReference;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * Implements the inline rendering strategy where the Request is rendered by the current HTTP kernel.
@@ -120,6 +120,13 @@ class InlineFragmentRenderer extends RoutableFragmentRenderer
 
         if ($session = $request->getSession()) {
             $subRequest->setSession($session);
+        }
+
+        if ($request->get('_format')) {
+            $subRequest->attributes->set('_format', $request->get('_format'));
+        }
+        if ($request->getDefaultLocale() !== $request->getLocale()) {
+            $subRequest->setLocale($request->getLocale());
         }
 
         return $subRequest;

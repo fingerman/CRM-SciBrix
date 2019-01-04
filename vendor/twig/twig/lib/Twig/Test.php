@@ -16,13 +16,14 @@
  *
  * @author Fabien Potencier <fabien@symfony.com>
  *
- * @see http://twig.sensiolabs.org/doc/templates.html#test-operator
+ * @see https://twig.symfony.com/doc/templates.html#test-operator
  */
 class Twig_Test
 {
     private $name;
     private $callable;
     private $options;
+    private $arguments = array();
 
     /**
      * Creates a template test.
@@ -65,6 +66,16 @@ class Twig_Test
     public function getNodeClass()
     {
         return $this->options['node_class'];
+    }
+
+    public function setArguments($arguments)
+    {
+        $this->arguments = $arguments;
+    }
+
+    public function getArguments()
+    {
+        return $this->arguments;
     }
 
     public function isVariadic()

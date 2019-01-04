@@ -21,12 +21,6 @@ profile:
     show:
         username: Username
         email: Email
-        firstname: Name
-        familyname: Surname
-        phoneBusiness: Phone (business)
-        phonePrivate: Phone (private)
-        address: Address
-        note: note
     edit:
         submit: Update
     flash:

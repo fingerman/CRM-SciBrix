@@ -11,7 +11,7 @@
 
 namespace Symfony\Component\Serializer\Encoder;
 
-use Symfony\Component\Serializer\Exception\UnexpectedValueException;
+use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 
 /**
  * Encodes JSON data.
@@ -39,7 +39,7 @@ class JsonEncode implements EncoderInterface
         $encodedJson = json_encode($data, $context['json_encode_options']);
 
         if (JSON_ERROR_NONE !== json_last_error() && (false === $encodedJson || !($context['json_encode_options'] & JSON_PARTIAL_OUTPUT_ON_ERROR))) {
-            throw new UnexpectedValueException(json_last_error_msg());
+            throw new NotEncodableValueException(json_last_error_msg());
         }
 
         return $encodedJson;

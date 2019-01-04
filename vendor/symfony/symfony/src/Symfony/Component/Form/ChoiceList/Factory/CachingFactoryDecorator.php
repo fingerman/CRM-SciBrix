@@ -45,15 +45,15 @@ class CachingFactoryDecorator implements ChoiceListFactoryInterface
      *
      * @return string The SHA-256 hash
      *
-     * @internal should not be used by user-land code
+     * @internal
      */
     public static function generateHash($value, $namespace = '')
     {
-        if (is_object($value)) {
+        if (\is_object($value)) {
             $value = spl_object_hash($value);
-        } elseif (is_array($value)) {
+        } elseif (\is_array($value)) {
             array_walk_recursive($value, function (&$v) {
-                if (is_object($v)) {
+                if (\is_object($v)) {
                     $v = spl_object_hash($v);
                 }
             });
@@ -68,7 +68,7 @@ class CachingFactoryDecorator implements ChoiceListFactoryInterface
      * @param array $array  The array to flatten
      * @param array $output The flattened output
      *
-     * @internal Should not be used by user-land code
+     * @internal
      */
     private static function flatten(array $array, &$output)
     {
@@ -77,7 +77,7 @@ class CachingFactoryDecorator implements ChoiceListFactoryInterface
         }
 
         foreach ($array as $key => $value) {
-            if (is_array($value)) {
+            if (\is_array($value)) {
                 self::flatten($value, $output);
                 continue;
             }

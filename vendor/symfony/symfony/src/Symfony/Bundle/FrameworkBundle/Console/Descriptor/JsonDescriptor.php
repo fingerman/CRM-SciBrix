@@ -90,7 +90,7 @@ class JsonDescriptor extends Descriptor
         } elseif ($service instanceof Definition) {
             $this->writeData($this->getContainerDefinitionData($service, isset($options['omit_tags']) && $options['omit_tags'], isset($options['show_arguments']) && $options['show_arguments']), $options);
         } else {
-            $this->writeData(get_class($service), $options);
+            $this->writeData(\get_class($service), $options);
         }
     }
 
@@ -113,15 +113,15 @@ class JsonDescriptor extends Descriptor
             $service = $this->resolveServiceDefinition($builder, $serviceId);
 
             if ($service instanceof Alias) {
-                if ($showPrivate || $service->isPublic()) {
+                if ($showPrivate || ($service->isPublic() && !$service->isPrivate())) {
                     $data['aliases'][$serviceId] = $this->getContainerAliasData($service);
                 }
             } elseif ($service instanceof Definition) {
-                if (($showPrivate || $service->isPublic())) {
+                if (($showPrivate || ($service->isPublic() && !$service->isPrivate()))) {
                     $data['definitions'][$serviceId] = $this->getContainerDefinitionData($service, $omitTags, $showArguments);
                 }
             } else {
-                $data['services'][$serviceId] = get_class($service);
+                $data['services'][$serviceId] = \get_class($service);
             }
         }
 
@@ -200,7 +200,7 @@ class JsonDescriptor extends Descriptor
             'hostRegex' => '' !== $route->getHost() ? $route->compile()->getHostRegex() : '',
             'scheme' => $route->getSchemes() ? implode('|', $route->getSchemes()) : 'ANY',
             'method' => $route->getMethods() ? implode('|', $route->getMethods()) : 'ANY',
-            'class' => get_class($route),
+            'class' => \get_class($route),
             'defaults' => $route->getDefaults(),
             'requirements' => $route->getRequirements() ?: 'NO CUSTOM',
             'options' => $route->getOptions(),
@@ -217,7 +217,7 @@ class JsonDescriptor extends Descriptor
     {
         $data = array(
             'class' => (string) $definition->getClass(),
-            'public' => $definition->isPublic(),
+            'public' => $definition->isPublic() && !$definition->isPrivate(),
             'synthetic' => $definition->isSynthetic(),
             'lazy' => $definition->isLazy(),
             'shared' => $definition->isShared(),
@@ -226,8 +226,11 @@ class JsonDescriptor extends Descriptor
             'autoconfigure' => $definition->isAutoconfigured(),
         );
 
-        foreach ($definition->getAutowiringTypes(false) as $autowiringType) {
-            $data['autowiring_types'][] = $autowiringType;
+        // forward compatibility with DependencyInjection component in version 4.0
+        if (method_exists($definition, 'getAutowiringTypes')) {
+            foreach ($definition->getAutowiringTypes(false) as $autowiringType) {
+                $data['autowiring_types'][] = $autowiringType;
+            }
         }
 
         if ($showArguments) {
@@ -237,7 +240,7 @@ class JsonDescriptor extends Descriptor
         $data['file'] = $definition->getFile();
 
         if ($factory = $definition->getFactory()) {
-            if (is_array($factory)) {
+            if (\is_array($factory)) {
                 if ($factory[0] instanceof Reference) {
                     $data['factory_service'] = (string) $factory[0];
                 } elseif ($factory[0] instanceof Definition) {
@@ -252,7 +255,7 @@ class JsonDescriptor extends Descriptor
         }
 
         $calls = $definition->getMethodCalls();
-        if (count($calls) > 0) {
+        if (\count($calls) > 0) {
             $data['calls'] = array();
             foreach ($calls as $callData) {
                 $data['calls'][] = $callData[0];
@@ -278,7 +281,7 @@ class JsonDescriptor extends Descriptor
     {
         return array(
             'service' => (string) $alias,
-            'public' => $alias->isPublic(),
+            'public' => $alias->isPublic() && !$alias->isPrivate(),
         );
     }
 
@@ -324,12 +327,12 @@ class JsonDescriptor extends Descriptor
     {
         $data = array();
 
-        if (is_array($callable)) {
+        if (\is_array($callable)) {
             $data['type'] = 'function';
 
-            if (is_object($callable[0])) {
+            if (\is_object($callable[0])) {
                 $data['name'] = $callable[1];
-                $data['class'] = get_class($callable[0]);
+                $data['class'] = \get_class($callable[0]);
             } else {
                 if (0 !== strpos($callable[1], 'parent::')) {
                     $data['name'] = $callable[1];
@@ -346,7 +349,7 @@ class JsonDescriptor extends Descriptor
             return $data;
         }
 
-        if (is_string($callable)) {
+        if (\is_string($callable)) {
             $data['type'] = 'function';
 
             if (false === strpos($callable, '::')) {
@@ -365,12 +368,25 @@ class JsonDescriptor extends Descriptor
         if ($callable instanceof \Closure) {
             $data['type'] = 'closure';
 
+            $r = new \ReflectionFunction($callable);
+            if (false !== strpos($r->name, '{closure}')) {
+                return $data;
+            }
+            $data['name'] = $r->name;
+
+            if ($class = $r->getClosureScopeClass()) {
+                $data['class'] = $class->name;
+                if (!$r->getClosureThis()) {
+                    $data['static'] = true;
+                }
+            }
+
             return $data;
         }
 
         if (method_exists($callable, '__invoke')) {
             $data['type'] = 'object';
-            $data['name'] = get_class($callable);
+            $data['name'] = \get_class($callable);
 
             return $data;
         }
@@ -380,7 +396,7 @@ class JsonDescriptor extends Descriptor
 
     private function describeValue($value, $omitTags, $showArguments)
     {
-        if (is_array($value)) {
+        if (\is_array($value)) {
             $data = array();
             foreach ($value as $k => $v) {
                 $data[$k] = $this->describeValue($v, $omitTags, $showArguments);

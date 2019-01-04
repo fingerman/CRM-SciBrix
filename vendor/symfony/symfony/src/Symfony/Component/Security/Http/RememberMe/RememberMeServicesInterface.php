@@ -11,9 +11,9 @@
 
 namespace Symfony\Component\Security\Http\RememberMe;
 
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 /**
  * Interface that needs to be implemented by classes which provide remember-me
@@ -56,7 +56,7 @@ interface RememberMeServicesInterface
      *
      * This method needs to take care of invalidating the cookie.
      */
-    public function loginFail(Request $request);
+    public function loginFail(Request $request, \Exception $exception = null);
 
     /**
      * Called whenever an interactive authentication attempt is successful
