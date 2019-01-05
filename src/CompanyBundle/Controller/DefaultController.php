@@ -5,6 +5,11 @@ namespace CompanyBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+/*
+ * Controller for domain.com/crm/
+ *
+ */
+
 class DefaultController extends Controller
 {
     /**
