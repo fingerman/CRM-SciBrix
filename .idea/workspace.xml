@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e63dee-f6ed-4c7c-981a-41be75a2a064" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml.dist" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml.dist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../symfony-deployment/bin/symfony_requirements" beforeDir="false" afterPath="$PROJECT_DIR$/../symfony-deployment/bin/symfony_requirements" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../symfony-deployment/var/SymfonyRequirements.php" beforeDir="false" afterPath="$PROJECT_DIR$/../symfony-deployment/var/SymfonyRequirements.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../symfony-deployment/web/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/../symfony-deployment/web/config.php" afterDir="false" />
@@ -55,7 +56,8 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="console" value="1" />
-          <entry key="dist" value="1" />
+          <entry key="dist" value="2" />
+          <entry key="gitignore" value="1" />
           <entry key="htaccess" value="1" />
           <entry key="json" value="3" />
           <entry key="lock" value="1" />
@@ -70,15 +72,17 @@
         <counts>
           <entry key="JSON" value="4" />
           <entry key="PHP" value="17" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
           <entry key="Twig" value="26" />
-          <entry key="XML" value="1" />
+          <entry key="XML" value="2" />
           <entry key="YAML" value="6" />
           <entry key="htaccess" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="dist" value="11" />
+          <entry key="gitignore" value="6" />
           <entry key="json" value="1" />
           <entry key="php" value="5" />
           <entry key="twig" value="11" />
@@ -89,7 +93,9 @@
         <counts>
           <entry key="JSON" value="1" />
           <entry key="PHP" value="5" />
+          <entry key="PLAIN_TEXT" value="6" />
           <entry key="Twig" value="11" />
+          <entry key="XML" value="11" />
           <entry key="YAML" value="100" />
         </counts>
       </usages-collector>
@@ -97,7 +103,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/console">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
@@ -105,6 +111,24 @@
               <folding>
                 <element signature="e#26#81#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/phpunit.xml.dist">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -166,8 +190,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../softwareTechnologies/html-stuff/website/todo.html" />
-        <option value="$PROJECT_DIR$/../softwareTechnologies/html-stuff/website/hello.html" />
         <option value="$PROJECT_DIR$/../softwareTechnologies/html-stuff/fruits.html" />
         <option value="$PROJECT_DIR$/../softwareTechnologies/html-stuff/contact.html" />
         <option value="$PROJECT_DIR$/../softwareTechnologies/html-stuff/colors.html" />
@@ -217,6 +239,8 @@
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register.html.twig" />
         <option value="$PROJECT_DIR$/bin/console" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/phpunit.xml.dist" />
       </list>
     </option>
   </component>
@@ -1941,12 +1965,12 @@
       <workItem from="1546618294758" duration="575000" />
       <workItem from="1546618991271" duration="197000" />
       <workItem from="1546619278599" duration="9859000" />
-      <workItem from="1546693017933" duration="1420000" />
+      <workItem from="1546693017933" duration="2425000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="470417000" />
+    <option name="totallyTimeSpent" value="471422000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1959,8 +1983,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-431" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21748401" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21748401" />
       <window_info id="Structure" order="1" weight="0.24946696" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1971,8 +1996,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
       <window_info anchor="bottom" id="PHP-CGI Server" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.2867804" side_tool="true" visible="true" weight="0.39370933" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.71321964" visible="true" weight="0.39370933" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.2867804" side_tool="true" visible="true" weight="0.43058568" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.71321964" visible="true" weight="0.43058568" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
@@ -2004,16 +2029,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../symfony-deployment/src/MainBundle/Resources/views/Default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../symfony-deployment/src/MainBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../symfony-deployment/src/MainBundle/Controller/CartController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -2278,6 +2293,20 @@
           <folding>
             <element signature="e#26#81#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpunit.xml.dist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
         </state>
       </provider>
     </entry>
