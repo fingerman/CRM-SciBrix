@@ -1,24 +1,75 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-xs-4">
-            <h1>Register</h1>
-            {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-            {{ form_row(form.username) }}
-            {{ form_row(form.email) }}
-            {{ form_row(form.plainPassword) }}
-            {{ form_row(form.firstName) }}
-            {{ form_row(form.familyName) }}
-            {{ form_row(form.phoneBusiness) }}
-            {{ form_row(form.phonePrivate) }}
-            {{ form_row(form.address) }}
-            {{ form_row(form.note) }}
-            <div>
-                <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}"/>
-            </div>
-            {{ form_end(form) }}
+{% block body %}
+
+
+    <h1>Register</h1>
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    <div class="form-group row justify-content-start">
+        <label class="col-md-1 control-label">Username:</label>
+        <div class="col-md-4">
+            {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
-</div>
+    <div class="form-group row justify-content-start">
+        <label class="col-md-1 control-label">E-Mail:</label>
+        <div class="col-md-4">
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group row justify-content-start">
+        <label class="col-md-1 control-label">Password:</label>
+        <div class="col-md-4">
+            {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group row justify-content-start">
+        <label class="col-md-1 control-label">Repeat Password:</label>
+        <div class="col-md-4">
+            {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group row justify-content-start">
+        <label class="col-md-1 control-label">First Name:</label>
+        <div class="col-md-4">
+            {{ form_widget(form.firstName, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group row justify-content-start">
+        <label class="col-md-1 control-label">Family Name:</label>
+        <div class="col-md-4">
+            {{ form_widget(form.familyName, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group row justify-content-start">
+        <label class="col-md-1 control-label">Phone Business:</label>
+        <div class="col-md-4">
+            {{ form_widget(form.phoneBusiness, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group row justify-content-start">
+        <label class="col-md-1 control-label">Phone Private:</label>
+        <div class="col-md-4">
+            {{ form_widget(form.phonePrivate, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group row justify-content-start">
+        <label class="col-md-1 control-label">Address:</label>
+        <div class="col-md-4">
+            {{ form_widget(form.address, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group row justify-content-start">
+        <label class="col-md-1 control-label">Note:</label>
+        <div class="col-md-4">
+            {{ form_widget(form.note, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
 
+    <div>
+        <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}"/>
+    </div>
+    {{ form_end(form) }}
+
+
+{% endblock %}

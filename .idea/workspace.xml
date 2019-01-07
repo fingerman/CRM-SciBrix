@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e63dee-f6ed-4c7c-981a-41be75a2a064" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../symfony-deployment/bin/symfony_requirements" beforeDir="false" afterPath="$PROJECT_DIR$/../symfony-deployment/bin/symfony_requirements" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../symfony-deployment/var/SymfonyRequirements.php" beforeDir="false" afterPath="$PROJECT_DIR$/../symfony-deployment/var/SymfonyRequirements.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../symfony-deployment/web/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/../symfony-deployment/web/config.php" afterDir="false" />
@@ -23,14 +26,15 @@
     <session id="451979379">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.21" value="2" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.26" value="1" />
+          <entry key="project.open.time.30" value="1" />
           <entry key="project.open.time.35" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -43,7 +47,7 @@
           <entry key="lock" value="1" />
           <entry key="php" value="27" />
           <entry key="symfony_requirements" value="1" />
-          <entry key="twig" value="26" />
+          <entry key="twig" value="45" />
           <entry key="xml" value="1" />
           <entry key="yml" value="6" />
         </counts>
@@ -53,7 +57,7 @@
           <entry key="JSON" value="4" />
           <entry key="PHP" value="29" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Twig" value="26" />
+          <entry key="Twig" value="45" />
           <entry key="XML" value="2" />
           <entry key="YAML" value="6" />
           <entry key="htaccess" value="2" />
@@ -65,7 +69,7 @@
           <entry key="gitignore" value="6" />
           <entry key="json" value="1" />
           <entry key="php" value="91" />
-          <entry key="twig" value="11" />
+          <entry key="twig" value="336" />
           <entry key="yml" value="100" />
         </counts>
       </usages-collector>
@@ -74,7 +78,7 @@
           <entry key="JSON" value="1" />
           <entry key="PHP" value="91" />
           <entry key="PLAIN_TEXT" value="6" />
-          <entry key="Twig" value="11" />
+          <entry key="Twig" value="336" />
           <entry key="XML" value="11" />
           <entry key="YAML" value="100" />
         </counts>
@@ -84,97 +88,53 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/ProfileFormType.php">
+        <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login_content.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+            <state relative-caret-position="63">
+              <caret line="8" column="30" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="80">
+              <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
               <folding>
-                <element signature="e#36#76#0#PHP" expanded="true" />
+                <element signature="e#12#37#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/UserRepository.php">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/company/edit.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
+            <state relative-caret-position="-1200">
+              <folding>
+                <element signature="e#12#26#0#Twig" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/RegistrationFormType.php">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/customer/show.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <folding>
-                <element signature="e#36#76#0#PHP" expanded="true" />
+                <element signature="e#12#26#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CompanyBundle/Controller/CustomerController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#44#78#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CompanyBundle/Controller/DefaultController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-              <folding>
-                <element signature="e#44#101#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/DefaultControllerTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/.htaccess">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app.php">
+        <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="17" column="40" lean-forward="true" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/CompanyBundle/Controller/DefaultControllerTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/DomainBundle/Controller/DefaultControllerTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+            <state relative-caret-position="212">
+              <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -231,8 +191,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../softwareTechnologies/html-stuff/rectangles.html" />
-        <option value="$PROJECT_DIR$/../softwareTechnologies/html-stuff/languages.html" />
         <option value="$PROJECT_DIR$/../softwareTechnologies/html-stuff/langs.css" />
         <option value="$PROJECT_DIR$/../softwareTechnologies/contact-us-form.html" />
         <option value="$PROJECT_DIR$/../softwareTechnologies/contact-us-form.css" />
@@ -273,7 +231,6 @@
         <option value="$PROJECT_DIR$/src/DomainBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
-        <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register.html.twig" />
         <option value="$PROJECT_DIR$/bin/console" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/phpunit.xml.dist" />
@@ -282,6 +239,9 @@
         <option value="$PROJECT_DIR$/tests/CompanyBundle/Controller/DefaultControllerTest.php" />
         <option value="$PROJECT_DIR$/tests/AppBundle/Controller/DefaultControllerTest.php" />
         <option value="$PROJECT_DIR$/app.php" />
+        <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig" />
       </list>
     </option>
   </component>
@@ -290,6 +250,57 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/_node_modules/acorn-dynamic-import/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/adjust-sourcemap-loader/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/autoprefixer/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/buffer/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/caniuse-api/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/css-selector-tokenizer/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/css/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/del/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/dom-converter/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/dom-serializer/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/express/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/hpack.js/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/htmlparser2/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/http-proxy-middleware/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/internal-ip/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/isobject/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/md5.js/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/memory-fs/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/node-libs-browser/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/original/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/pkg-up/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/portfinder/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/postcss-merge-rules/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/postcss-modules-extract-imports/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/postcss-modules-local-by-default/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/postcss-modules-scope/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/postcss-modules-values/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/postcss/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/randomatic/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/readdirp/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/reduce-css-calc/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/reduce-function-call/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/regjsparser/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/renderkid/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/rework/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/sockjs-client/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/spdy-transport/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/stream-browserify/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/stream-http/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/string-width/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/uglify-js/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/url-parse/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/url/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/util/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/webpack-dev-server/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/webpack-sources/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/webpack/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/wrap-ansi/node_modules" />
+    <handled-path value="$PROJECT_DIR$/_node_modules/yargs/node_modules" />
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
@@ -1812,6 +1823,73 @@
               <item name="crm-scibrix" type="b2602c69:ProjectViewProjectNode" />
               <item name="crm-scibrix" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="crm-scibrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crm-scibrix" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crm-scibrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crm-scibrix" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crm-scibrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crm-scibrix" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="FOSUserBundle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crm-scibrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crm-scibrix" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="FOSUserBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crm-scibrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crm-scibrix" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="FOSUserBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="ChangePassword" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crm-scibrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crm-scibrix" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="FOSUserBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="Registration" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crm-scibrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crm-scibrix" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crm-scibrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crm-scibrix" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="company" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crm-scibrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crm-scibrix" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="customer" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -1822,7 +1900,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="SearchEverywhereHistoryKey" value="RouterListener.php&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php&#10;webserverbundle&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/vendor/symfony/symfony/src/Symfony/Bundle/WebServerBundle&#10;fos_user&#9;null&#9;null&#10;baseuser&#9;null&#9;null&#10;composer.json&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/composer.json&#10;composer&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/composer.json&#10;ProfileFormType&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/vendor/friendsofsymfony/user-bundle/Form/Type/ProfileFormType.php&#10;formview&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/vendor/symfony/symfony/src/Symfony/Component/Form/FormView.php&#10;user&#9;null&#9;null&#10;_defaults&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/vendor/doctrine/doctrine-cache-bundle/Tests/DependencyInjection/Fixtures/config/yml/configurable_defaults.yml&#10;fosuser&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.bg.yml&#10;fosuserbundle.en.&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.en.yml&#10;fos_user_security_login&#9;null&#9;null&#10;navbar-inverse&#9;null&#9;null&#10;securi&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/vendor/friendsofsymfony/user-bundle/Controller/SecurityController.php&#10;entity&#9;null&#9;null&#10;index.php&#9;FILE&#9;file://C:/xampp/htdocs/basicwebsite/public/index.php" />
+    <property name="SearchEverywhereHistoryKey" value="login_content&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/app/Resources/FOSUserBundle/views/Security/login_content.html.twig&#10;RouterListener.php&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php&#10;webserverbundle&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/vendor/symfony/symfony/src/Symfony/Bundle/WebServerBundle&#10;fos_user&#9;null&#9;null&#10;baseuser&#9;null&#9;null&#10;composer.json&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/composer.json&#10;composer&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/composer.json&#10;ProfileFormType&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/vendor/friendsofsymfony/user-bundle/Form/Type/ProfileFormType.php&#10;formview&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/vendor/symfony/symfony/src/Symfony/Component/Form/FormView.php&#10;user&#9;null&#9;null&#10;_defaults&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/vendor/doctrine/doctrine-cache-bundle/Tests/DependencyInjection/Fixtures/config/yml/configurable_defaults.yml&#10;fosuser&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.bg.yml&#10;fosuserbundle.en.&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.en.yml&#10;fos_user_security_login&#9;null&#9;null&#10;navbar-inverse&#9;null&#9;null&#10;securi&#9;FILE&#9;file://C:/xampp/htdocs/crm-scibrix/vendor/friendsofsymfony/user-bundle/Controller/SecurityController.php&#10;entity&#9;null&#9;null&#10;index.php&#9;FILE&#9;file://C:/xampp/htdocs/basicwebsite/public/index.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../crm-scibrix-local" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -1993,12 +2071,13 @@
       <workItem from="1546618294758" duration="575000" />
       <workItem from="1546618991271" duration="197000" />
       <workItem from="1546619278599" duration="9859000" />
-      <workItem from="1546693017933" duration="5711000" />
+      <workItem from="1546693017933" duration="10057000" />
+      <workItem from="1546872315366" duration="5698000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="474708000" />
+    <option name="totallyTimeSpent" value="484752000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2011,9 +2090,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-431" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21748401" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2196162" />
       <window_info id="Structure" order="1" weight="0.24946696" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -2024,8 +2102,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
       <window_info anchor="bottom" id="PHP-CGI Server" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.2867804" side_tool="true" visible="true" weight="0.43058568" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.71321964" visible="true" weight="0.43058568" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.28731343" side_tool="true" visible="true" weight="0.27223426" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.71268654" visible="true" weight="0.27223426" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
@@ -2057,27 +2135,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/composer/installed.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="152" column="10" selection-start-line="152" selection-start-column="10" selection-end-line="152" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="43" column="28" lean-forward="true" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/composer.lock">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1300">
@@ -2165,24 +2222,8 @@
     <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/views/Profile/show_content.html.twig">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/ChangePassword/change_password.html.twig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/ChangePassword/change_password_content.html.twig">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/edit_content.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
@@ -2205,38 +2246,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="62" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="62" selection-start-line="3" selection-start-column="62" selection-end-line="3" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login_content.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="12" column="48" lean-forward="true" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Controller/ProfileController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-200">
           <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-          <folding>
-            <element signature="e#7#259#0#PHP" expanded="true" />
-            <element signature="e#299#348#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2244,16 +2257,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="7" column="74" selection-start-line="7" selection-start-column="74" selection-end-line="7" selection-end-column="74" />
-          <folding>
-            <element signature="e#299#356#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/show_content.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -2264,9 +2267,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#26#81#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2288,19 +2288,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
-          <folding>
-            <element signature="e#40#99#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-300">
-          <folding>
-            <element signature="e#125#157#0#PHP" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-300" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/UserRepository.php">
@@ -2314,20 +2307,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-          <folding>
-            <element signature="e#36#76#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/RegistrationFormType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#36#76#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CompanyBundle/Controller/CustomerController.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -2342,9 +2326,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-          <folding>
-            <element signature="e#44#101#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2374,8 +2355,104 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="40" lean-forward="true" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+        <state relative-caret-position="220">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/edit_content.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/show.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/show_content.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="15" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="51" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/ChangePassword/change_password.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#12#37#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/company/new.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1700">
+          <caret line="85" column="28" selection-start-line="85" selection-start-column="28" selection-end-line="85" selection-end-column="28" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login_content.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="8" column="30" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+          <folding>
+            <element signature="e#12#37#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/company/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1200">
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/customer/show.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
         </state>
       </provider>
     </entry>
