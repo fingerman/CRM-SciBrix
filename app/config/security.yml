@@ -46,6 +46,4 @@ security:
     access_control:
             - { path: ^/crm/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/crm/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-            - { path: ^/crm/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-            - { path: ^/crm/admin/, role: ROLE_ADMIN }
             - { path: ^/crm/, roles: [ROLE_USER, ROLE_ADMIN, ROLE_SADMIN] }

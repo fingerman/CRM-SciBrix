@@ -21,10 +21,10 @@ update their profile. Admins can further delete all assets incl. user profiles.
     -   Country	
     -    Phone	
     -    Company Email	
-    -    already contacted(Checkbox) 
+    -    already contacted (checkbox) 
     -    Interested In	
-    -    Amount	5 (integer)
-    -    Price	5.00
+    -    Amount	 (integer)
+    -    Price	
     -    has bought (checkbox)
     -    Description (text)
 

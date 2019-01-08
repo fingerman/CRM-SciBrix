@@ -58,6 +58,24 @@ class ProfileController extends Controller
         ));
     }
 
+
+
+    /**
+     * Show all users.
+     */
+
+    public function showallAction()
+    {
+        //access user manager services
+
+        $userManager = $this->get('fos_user.user_manager');
+        $users = $userManager->findUsers();
+
+        return $this->render('@FOSUser/Profile/show_all.html.twig', array('users' => $users));
+    }
+
+
+
     /**
      * Edit the user.
      *

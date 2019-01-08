@@ -20,6 +20,9 @@
                 <li><a href="{{ path('customer_index') }}">Customers</a></li>
                 <li><a href="{{ path('supplier_index') }}">Suppliers</a></li>
                 <li><a href="{{ path('product_index') }}">Products</a></li>
+                {% if is_granted("ROLE_ADMIN") %}
+                <li><a href="{{ path('fos_user_profile_list') }}">Users</a></li>
+                {% endif %}
             {% endif %}
         </ul>
 

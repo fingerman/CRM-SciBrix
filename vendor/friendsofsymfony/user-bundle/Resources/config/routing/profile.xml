@@ -12,4 +12,8 @@
         <default key="_controller">fos_user.profile.controller:editAction</default>
     </route>
 
+    <route id="fos_user_profile_list" path="/users" methods="GET">
+        <default key="_controller">fos_user.profile.controller:showallAction</default>
+    </route>
+
 </routes>

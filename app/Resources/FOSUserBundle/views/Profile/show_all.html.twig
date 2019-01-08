@@ -1,0 +1,43 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}
+
+    <legend>Users list</legend>
+    <br>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Second Name</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.familyname }}</td>
+                <td>
+                    <a href="{{ path('fos_user_profile_show', { 'id': user.id }) }}" type="button" class="btn btn-info"
+                       aria-label="Center Align">
+                        Show
+                    </a>
+                    <a href="{{ path('fos_user_profile_edit', { 'id': user.id }) }}" type="button" class="btn btn-info"
+                       aria-label="Center Align">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+{% endblock fos_user_content %}
+
