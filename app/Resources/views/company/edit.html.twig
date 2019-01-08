@@ -6,6 +6,7 @@
         <div class="col-md-10">
             <h1>Company edit</h1>
         </div>
+        {%  if is_granted('ROLE_ADMIN') %}
         <div class="col-md-1">
             <div class="col-md-offset-6 col-md-1">
                 {{ form_start(delete_form) }}
@@ -13,6 +14,7 @@
                 {{ form_end(delete_form) }}
             </div>
         </div>
+        {% endif %}
     </div>
 
     {{ form_start(edit_form, {'attr': {'class': 'form-horizontal'} }) }}
