@@ -52,5 +52,4 @@ class SupplierType extends AbstractType
         return 'companybundle_supplier';
     }
 
-
 }

@@ -22,18 +22,18 @@ update their profile.
     -   Address
     -   Country	
     -    Phone	
-    -    Company Email	
+    -    Company Email (emailType)	
     -    already contacted (checkbox) 
     -    Interested In	
     -    Amount	 (integer)
-    -    Price	
+    -    Price	(MoneyType)
     -    has bought (checkbox)
     -    Description (text)
 
 * #####Customer Details:
     -   Name
     -   Surname
-    -   Email
+    -   Email (emailType)	
     -   Country	
     -    Phone (business)
     -    Phone (private)
@@ -47,7 +47,7 @@ update their profile.
     - Id	
     - Name	
     - Segment	
-    - Email	
+    - Email	(emailType)	
     - Phone	
     - Address	
     - Description	
@@ -59,7 +59,7 @@ update their profile.
     - Segment	
     - Name	
     - Production Price	
-    - Sell Price	
+    - Sell Price (MoneyType)
     - Sold to	
     - Count	
     - Note	
@@ -67,10 +67,10 @@ update their profile.
 * #####User Profile (editor or admin)
 	
     - Username
-    - Email
+    - Email (emailType)	
     - First Name
     - Family Name
     - Phone Business
     - Phone Private
     - Address
-    - Note
+    - Note 

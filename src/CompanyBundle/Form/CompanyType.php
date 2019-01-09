@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Intl\Intl;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class CompanyType extends AbstractType
 {
@@ -26,7 +27,7 @@ class CompanyType extends AbstractType
                 'choices' => array_flip(Intl::getRegionBundle()->getCountryNames())
             ])
             ->add('companyPhone')
-            ->add('companyEmail')
+            ->add('companyEmail', EmailType::class)
             ->add('contacted')
             ->add('interestedIn')
             ->add('amount')
@@ -34,7 +35,7 @@ class CompanyType extends AbstractType
                 'currency' => '',
                 ))
             ->add('hasBought')
-            ->add('note', null, array(
+            ->add('description', null, array(
                 'required'   => false,
                 'empty_data' => '',
             ));
