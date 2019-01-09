@@ -59,7 +59,6 @@ class ProfileController extends Controller
     }
 
 
-
     /**
      * Show all users.
      */

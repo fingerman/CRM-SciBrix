@@ -9,8 +9,10 @@ There is no public part. Visitors are asked to log in or registry.
    
 This basic CRM is divided into Companies, Customers, Suppliers and Products. The features of those have   
 different relations as listed below.   
-Users are editors and admins. Editors can create and update all assets and
-update their profile. Admins can further delete all assets incl. user profiles.
+Users are editors and admins:
+   -  Editors can create and update all assets and
+update their profile.   
+   - Admins can further delete all assets. They see all users and can edit them.
 
 
 ####Features:  
@@ -35,13 +37,13 @@ update their profile. Admins can further delete all assets incl. user profiles.
     -   Country	
     -    Phone (business)
     -    Phone (private)
-    -    Company
+    -    Company (ManyToOne relation to Company Name)
     -    Department 	
     -    Address
     -    Interested in
     -    Note
     
-* #####Supplie 
+* #####Supplier 
     - Id	
     - Name	
     - Segment	
@@ -49,7 +51,7 @@ update their profile. Admins can further delete all assets incl. user profiles.
     - Phone	
     - Address	
     - Description	
-    - Company
+    - Company (ManyToOne relation to Company Name)
     
     
 * #####Product
