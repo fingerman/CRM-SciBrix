@@ -34,9 +34,10 @@ class CompanyType extends AbstractType
                 'currency' => '',
                 ))
             ->add('hasBought')
-            ->add('description', null,  [
+            ->add('note', null, array(
                 'required'   => false,
-            ]);
+                'empty_data' => '',
+            ));
     }
     
     /**

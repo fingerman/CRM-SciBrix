@@ -24,9 +24,10 @@ class SupplierType extends AbstractType
             ->add('email')
             ->add('phone')
             ->add('address')
-            ->add('description', null,  [
+            ->add('description', null, array(
                 'required'   => false,
-            ])
+                'empty_data' => '',
+            ))
             ->add('company', EntityType::class, array(
                 'class' => 'CompanyBundle:Company',
                 'choice_label' => 'companyName'

@@ -27,9 +27,10 @@ class CustomerType extends AbstractType
             ->add('department')
             ->add('address')
             ->add('interestedIn')
-            ->add('note', null,  [
+            ->add('note', null, array(
                 'required'   => false,
-            ]);
+                'empty_data' => '',
+            ));
     }
 
     /**

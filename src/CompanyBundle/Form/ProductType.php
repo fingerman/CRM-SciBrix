@@ -20,9 +20,10 @@ class ProductType extends AbstractType
             ->add('sellPrice')
             ->add('soldTo')
             ->add('count')
-            ->add('note', null,  [
+            ->add('note', null, array(
                 'required'   => false,
-            ]);
+                'empty_data' => '',
+            ));
     }
     
     /**
