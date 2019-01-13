@@ -15,8 +15,8 @@ update their profile.
    - Admins can further delete all assets. They see all users and can edit them.
 
 
-####Features:  
-* #####Company Details:
+#### Features:  
+* ##### Company Details:
     -   Name
     -   Segment
     -   Address
@@ -30,7 +30,7 @@ update their profile.
     -    has bought (checkbox)
     -    Description (text)
 
-* #####Customer Details:
+* ##### Customer Details:
     -   Name
     -   Surname
     -   Email (emailType)	
@@ -43,7 +43,7 @@ update their profile.
     -    Interested in
     -    Note
     
-* #####Supplier 
+* ##### Supplier 
     - Id	
     - Name	
     - Segment	
@@ -54,7 +54,7 @@ update their profile.
     - Company (ManyToOne relation to Company Name)
     
     
-* #####Product
+* ##### Product
     - Id	
     - Segment	
     - Name	
@@ -64,7 +64,7 @@ update their profile.
     - Count	
     - Note	
     
-* #####User Profile (editor or admin)
+* ##### User Profile (editor or admin)
 	
     - Username
     - Email (emailType)	
