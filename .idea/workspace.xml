@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4e63dee-f6ed-4c7c-981a-41be75a2a064" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/npm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/sci_files/SciBrix_Logo_Print_RGB_Positiv_Standardversion.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/sci_files/background_scibrix.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/sci_files/css.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../symfony-deployment/bin/symfony_requirements" beforeDir="false" afterPath="$PROJECT_DIR$/../symfony-deployment/bin/symfony_requirements" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../symfony-deployment/var/SymfonyRequirements.php" beforeDir="false" afterPath="$PROJECT_DIR$/../symfony-deployment/var/SymfonyRequirements.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../symfony-deployment/web/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/../symfony-deployment/web/config.php" afterDir="false" />
@@ -112,9 +100,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -129,11 +121,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Bundle/WebServerBundle/Resources/router.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="-109">
+              <caret line="21" column="3" lean-forward="true" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
               <folding>
                 <element signature="e#7#236#0#PHP" expanded="true" />
               </folding>
@@ -216,7 +208,6 @@
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/bin/console" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/phpunit.xml.dist" />
         <option value="$PROJECT_DIR$/src/CompanyBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/tests/DomainBundle/Controller/DefaultControllerTest.php" />
@@ -249,6 +240,7 @@
         <option value="$PROJECT_DIR$/src/CompanyBundle/Form/SupplierType.php" />
         <option value="$PROJECT_DIR$/src/CompanyBundle/Form/CompanyType.php" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -1726,11 +1718,6 @@
               <item name="crm-scibrix" type="b2602c69:ProjectViewProjectNode" />
               <item name="crm-scibrix" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="crm-scibrix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crm-scibrix" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -1916,12 +1903,12 @@
       <workItem from="1546962017637" duration="9004000" />
       <workItem from="1546985650669" duration="9605000" />
       <workItem from="1547116533565" duration="4486000" />
-      <workItem from="1547333952154" duration="2476000" />
+      <workItem from="1547333952154" duration="4824000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="524783000" />
+    <option name="totallyTimeSpent" value="527131000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1934,6 +1921,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-431" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1641791" />
       <window_info id="Structure" order="1" weight="0.24946696" />
@@ -1946,8 +1934,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
       <window_info anchor="bottom" id="PHP-CGI Server" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.29051173" side_tool="true" visible="true" weight="0.11930586" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.7094883" visible="true" weight="0.11930586" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.29051173" side_tool="true" visible="true" weight="0.4370933" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.7094883" visible="true" weight="0.4370933" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
@@ -2257,9 +2245,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/app_dev.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
@@ -2275,11 +2260,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Bundle/WebServerBundle/Resources/router.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="-109">
+          <caret line="21" column="3" lean-forward="true" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
           <folding>
             <element signature="e#7#236#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
         </state>
       </provider>
     </entry>
