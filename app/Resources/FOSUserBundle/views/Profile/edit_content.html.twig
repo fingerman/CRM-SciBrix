@@ -1,15 +1,65 @@
 {% trans_default_domain 'FOSUserBundle' %}
-<h1>Edit User Profile</h1>
-{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-    {{ form_row(form.username) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.firstName) }}
-    {{ form_row(form.familyName) }}
-    {{ form_row(form.phoneBusiness) }}
-    {{ form_row(form.phonePrivate) }}
-    {{ form_row(form.address) }}
-    {{ form_row(form.note) }}
-<div>
-    <input type="submit" value="{{ 'profile.edit.submit'|trans }}"/>
-</div>
-{{ form_end(form) }}
+
+
+{% block body %}
+
+
+    <h1>Profile Edit</h1>
+    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+    <div class="form-group">
+        <label class="col-md-4 control-label">Username:</label>
+        <div class="col-md-5">
+            {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">E-Mail:</label>
+        <div class="col-md-5">
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">First Name:</label>
+        <div class="col-md-5">
+            {{ form_widget(form.firstName, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">Family Name:</label>
+        <div class="col-md-5">
+            {{ form_widget(form.familyName, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">Phone Business:</label>
+        <div class="col-md-5">
+            {{ form_widget(form.phoneBusiness, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">Phone Private:</label>
+        <div class="col-md-5">
+            {{ form_widget(form.phonePrivate, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">Address:</label>
+        <div class="col-md-5">
+            {{ form_widget(form.address, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label">Note:</label>
+        <div class="col-md-5">
+            {{ form_widget(form.note, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-5 col-md-1">
+            <input type="submit" class="btn btn-primary" value="{{ 'profile.edit.submit'|trans }}"/>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+
+{% endblock %}
