@@ -16,4 +16,15 @@
         <default key="_controller">fos_user.profile.controller:showallAction</default>
     </route>
 
-</routes>
+    <route id="fos_user_profile_show_diff" path="/{id}" methods="GET">
+        <default key="_controller">fos_user.profile.controller:showDiffAction</default>
+        <requirement key="page">\d+</requirement>
+    </route>
+
+    <route id="fos_user_profile_edit_diff" path="/edit/{id}" methods="GET POST">
+        <default key="_controller">fos_user.profile.controller:editDiffAction</default>
+        <requirement key="page">\d+</requirement>
+    </route>
+
+
+    </routes>

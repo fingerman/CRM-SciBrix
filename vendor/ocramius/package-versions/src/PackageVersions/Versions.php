@@ -17,7 +17,7 @@ final class Versions
   'doctrine/collections' => 'v1.4.0@1a4fb7e902202c33cce8c55989b945612943c2ba',
   'doctrine/common' => 'v2.7.3@4acb8f89626baafede6ee5475bc5844096eba8a9',
   'doctrine/dbal' => 'v2.5.13@729340d8d1eec8f01bff708e12e449a3415af873',
-  'doctrine/doctrine-bundle' => '1.10.0@82d2c63cd09acbde2332f55d9aa7b28aefe4983d',
+  'doctrine/doctrine-bundle' => '1.10.1@98551d71f515692c2278073e0d483763ac70b341',
   'doctrine/doctrine-cache-bundle' => '1.3.5@5514c90d9fb595e1095e6d66ebb98ce9ef049927',
   'doctrine/doctrine-migrations-bundle' => 'v1.3.2@49fa399181db4bf4f9f725126bd1cb65c4398dce',
   'doctrine/inflector' => 'v1.2.0@e11d84c6e018beedd929cff5220969a3c6d1d462',
@@ -54,8 +54,8 @@ final class Versions
   'symfony/polyfill-php70' => 'v1.10.0@6b88000cdd431cd2e940caa2cb569201f3f84224',
   'symfony/polyfill-util' => 'v1.10.0@3b58903eae668d348a7126f999b0da0f2f93611c',
   'symfony/swiftmailer-bundle' => 'v2.6.7@c4808f5169efc05567be983909d00f00521c53ec',
-  'symfony/symfony' => 'v3.4.20@f6b8ddc362b1cf3fb06548693c3adbb736092412',
-  'twig/twig' => 'v2.6.0@a11dd39f5b6589e14f0ff3b36675d06047c589b1',
+  'symfony/symfony' => 'v3.4.21@c7a57e0bcc3c57ae697f072b3e862487b6fd0030',
+  'twig/twig' => 'v2.6.2@7d7342c8a4059fefb9b8d07db0cc14007021f9b7',
   'zendframework/zend-code' => '3.1.0@2899c17f83a7207f2d7f53ec2f421204d3beea27',
   'zendframework/zend-eventmanager' => '3.2.1@a5e2583a211f73604691586b8406ff7296a946dd',
   'myclabs/deep-copy' => '1.7.0@3b8a3a99ba1f6a3952ac2747d989303cbd6b7a3e',
@@ -80,9 +80,9 @@ final class Versions
   'sebastian/recursion-context' => '2.0.0@2c3ba150cbec723aa057506e73a8d33bdb286c9a',
   'sebastian/resource-operations' => '1.0.0@ce990bb21759f94aeafd30209e8cfcdfa8bc3f52',
   'sebastian/version' => '2.0.1@99732be0ddb3361e16ad77b68ba41efc8e979019',
-  'symfony/phpunit-bridge' => 'v3.4.20@2155067dfc73e0e77dbc26f236af17e4df552de5',
+  'symfony/phpunit-bridge' => 'v3.4.21@5dab0d4b2ac99ab22b447b615fdfdc10ec4af3d5',
   'webmozart/assert' => '1.4.0@83e253c8e0be5b0257b881e1827274667c5c17a9',
-  'computer/crm-scibrix' => '9999999-dev@7c7abe41f16b91840588473df5e160232b5a510b',
+  'computer/crm-scibrix' => 'dev-master@63d00278d2ef8a674e0f887da8497ab3920f6108',
 );
 
     private function __construct()

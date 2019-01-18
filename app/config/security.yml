@@ -47,3 +47,4 @@ security:
             - { path: ^/crm/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/crm/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/crm/, roles: [ROLE_USER, ROLE_ADMIN, ROLE_SADMIN] }
+            - { path: ^/crm/profile/*, roles: [ROLE_ADMIN, ROLE_SADMIN] }

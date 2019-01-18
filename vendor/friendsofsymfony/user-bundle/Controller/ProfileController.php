@@ -17,13 +17,14 @@ use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Form\Factory\FactoryInterface;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserInterface;
-use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use FOS\UserBundle\Model\UserManagerInterface;
+use FOS\UserBundle\Model\User;
 
 /**
  * Controller managing the user profile.
@@ -54,6 +55,22 @@ class ProfileController extends Controller
         }
 
         return $this->render('@FOSUser/Profile/show.html.twig', array(
+            'user' => $user,
+        ));
+    }
+
+
+    /**
+     * Show different user.
+     */
+
+    public function showDiffAction($id)
+    {
+
+        $userManager = $this->get('fos_user.user_manager');
+        $user = $userManager->findUserBy(['id' => $id]);
+
+        return $this->render('@FOSUser/Profile/show_diff.html.twig', array(
             'user' => $user,
         ));
     }

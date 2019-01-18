@@ -1,0 +1,9 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}
+    {% if is_granted('ROLE_ADMIN') %}
+        {% include "@FOSUser/Profile/show_content.html.twig" %}
+    {% else %}
+        <p>Just admins have access to all Users !</p>
+    {% endif %}
+{% endblock fos_user_content %}

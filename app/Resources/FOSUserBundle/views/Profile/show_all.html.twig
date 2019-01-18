@@ -1,45 +1,53 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
+
+
+
+
 {% block fos_user_content %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <legend>Users list</legend>
+        <br>
 
-    <legend>Users list</legend>
-    <br>
-
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>First Name</th>
-            <th>Second Name</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
+        <table class="table table-hover">
+            <thead>
             <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.firstName }}</td>
-                <td>{{ user.familyname }}</td>
-                <td>
-                    <a href="{{ path('fos_user_profile_show', { 'id': user.id }) }}" type="button" class="btn btn-info"
-                       aria-label="Center Align">
-                        Show
-                    </a>
-                    <a href="{{ path('fos_user_profile_edit', { 'id': user.id }) }}" type="button" class="btn btn-info"
-                       aria-label="Center Align">
-                        Edit
-                    </a>
-                </td>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Second Name</th>
+                <th></th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.familyname }}</td>
+                    <td>
+                        <a href="{{ path('fos_user_profile_show_diff', { 'id': user.id }) }}" type="button"
+                           class="btn btn-info"
+                           aria-label="Center Align">
+                            Show
+                        </a>
+                        <a href="{{ path('fos_user_profile_edit', { 'id': user.id }) }}" type="button"
+                           class="btn btn-info"
+                           aria-label="Center Align">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-
+    {% else %}
+        <p>Just admins have access to all Users !</p>
+    {% endif %}
 
 {% endblock fos_user_content %}
 
