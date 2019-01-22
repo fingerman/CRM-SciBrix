@@ -1,0 +1,53 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <h1>User Profile</h1>
+        </div>
+        <table class="table table-hover" align="center" style="max-width: 700px;">
+            <tbody>
+            <col width="250">
+            <tr>
+                <th>{{ 'profile.show.username'|trans }}</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'profile.show.email'|trans }}</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'profile.show.firstname'|trans }}</th>
+                <td>{{ user.firstname }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'profile.show.familyname'|trans }}</th>
+                <td>{{ user.familyname }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'profile.show.phoneBusiness'|trans }}</th>
+                <td>{{ user.phoneBusiness }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'profile.show.phonePrivate'|trans }}</th>
+                <td>{{ user.phonePrivate }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'profile.show.address'|trans }}</th>
+                <td>{{ user.address }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'profile.show.note'|trans }}</th>
+                <td>{{ user.note }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="col-md-2 col-md-offset-4">
+            <a class="btn btn-default" href="{{ path('fos_user_profile_list') }}" role="button">Back to the list</a>
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-primary" href="{{ path('fos_user_profile_edit_diff', { 'id': user.id }) }}" role="button">Edit</a>
+        </div>
+
+    </div>
+</div>

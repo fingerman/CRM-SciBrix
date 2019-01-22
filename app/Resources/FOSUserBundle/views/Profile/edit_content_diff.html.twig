@@ -5,7 +5,7 @@
 
 
     <h1>Profile Edit</h1>
-    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+    {{ form_start(form, { 'action': path('fos_user_profile_edit_diff', {'id': user_id}), 'attr': { 'class': 'fos_user_profile_edit_diff' } }) }}
     <div class="form-group">
         <label class="col-md-4 control-label">Username:</label>
         <div class="col-md-5">
@@ -56,7 +56,7 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-5 col-md-1">
-            <input type="submit" class="btn btn-primary" value="Edit my profile"/>
+            <button type="submit" class="btn btn-primary">Renew</button>
         </div>
     </div>
     {{ form_end(form) }}

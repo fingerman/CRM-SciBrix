@@ -54,9 +54,7 @@ class ProfileController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->render('@FOSUser/Profile/show.html.twig', array(
-            'user' => $user,
-        ));
+        return $this->render('@FOSUser/Profile/show.html.twig', array('user' => $user));
     }
 
 
@@ -70,9 +68,7 @@ class ProfileController extends Controller
         $userManager = $this->get('fos_user.user_manager');
         $user = $userManager->findUserBy(['id' => $id]);
 
-        return $this->render('@FOSUser/Profile/show_diff.html.twig', array(
-            'user' => $user,
-        ));
+        return $this->render('@FOSUser/Profile/show_diff.html.twig', array('user' => $user,));
     }
 
 
@@ -89,7 +85,6 @@ class ProfileController extends Controller
 
         return $this->render('@FOSUser/Profile/show_all.html.twig', array('users' => $users));
     }
-
 
 
     /**
@@ -113,8 +108,8 @@ class ProfileController extends Controller
             return $event->getResponse();
         }
 
-        $form = $this->formFactory->createForm();
-        $form->setData($user);
+        $form = $this->formFactory->createForm()->remove('current_password');
+        $form->setData($user)->remove('current_password');
 
         $form->handleRequest($request);
 
@@ -134,8 +129,46 @@ class ProfileController extends Controller
             return $response;
         }
 
-        return $this->render('@FOSUser/Profile/edit.html.twig', array(
-            'form' => $form->createView(),
-        ));
+        return $this->render('@FOSUser/Profile/edit.html.twig', array('form' => $form->createView(),));
     }
+
+
+    /**
+     * Edit another user
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function editDiffAction($id, Request $request)
+    {
+        $userManager = $this->get('fos_user.user_manager');
+        $user = $userManager->findUserBy(['id' => $id]);
+
+        $event = new GetResponseUserEvent($user, $request);
+
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
+        }
+
+        $form = $this->formFactory->createForm()->remove("current_password");
+        $form->setData($user)->remove("current_password");
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $event = new FormEvent($form, $request);
+
+            $userManager = $this->get('fos_user.user_manager');
+            $userManager->updateUser($user);
+
+            $url = $this->generateUrl('fos_user_profile_show_diff', array('id' => $user->getId()));
+            $response = new RedirectResponse($url);
+
+            return $response;
+        }
+
+        return $this->render('@FOSUser/Profile/edit_diff.html.twig', array('form' => $form->createView(), 'user_id' => $user->getId(),));
+    }
+
 }
