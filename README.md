@@ -12,7 +12,7 @@ different relations as listed below.
 Users are editors and admins:
    -  Editors can create and update all assets and
 update their profile.   
-   - Admins can further delete all assets. They see all users and can edit them.
+   - Admins can further delete all assets. They see all a list of all users and can edit their profiles.
 
 
 #### Features:  
